@@ -1,0 +1,1455 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>お金管理AIプロンプト集</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1a2332;
+    --navy-light: #243248;
+    --navy-deep: #131b29;
+    --rose-gold: #C9A28A;
+    --rose-gold-bright: #d8b59f;
+    --rose-gold-soft: #b89178;
+    --champagne: #E5D4B7;
+    --cream: #F5EBDB;
+    --cream-soft: #FAF6F0;
+    --text-primary: #F5EBDB;
+    --text-secondary: rgba(245, 235, 219, 0.75);
+    --text-muted: rgba(245, 235, 219, 0.55);
+    --border: rgba(229, 212, 183, 0.18);
+    --shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: var(--navy-deep);
+    color: var(--text-primary);
+    line-height: 1.8;
+    overflow-x: hidden;
+    background-image:
+      radial-gradient(at 0% 0%, rgba(201, 162, 138, 0.08) 0%, transparent 50%),
+      radial-gradient(at 100% 100%, rgba(229, 212, 183, 0.06) 0%, transparent 50%);
+    background-attachment: fixed;
+  }
+
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+  .hero {
+    padding: 80px 24px 60px;
+    text-align: center;
+    background: linear-gradient(180deg, var(--navy) 0%, var(--navy-deep) 100%);
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(201, 162, 138, 0.12) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    letter-spacing: 0.3em;
+    color: var(--rose-gold-bright);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    position: relative;
+  }
+
+  .hero h1 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(28px, 5vw, 44px);
+    font-weight: 600;
+    color: var(--cream);
+    margin-bottom: 20px;
+    letter-spacing: 0.05em;
+    line-height: 1.4;
+    position: relative;
+  }
+
+  .hero-sub {
+    font-size: 15px;
+    color: var(--text-secondary);
+    max-width: 580px;
+    margin: 0 auto 32px;
+    line-height: 2;
+    position: relative;
+  }
+
+  .hero-meta {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 28px;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    background: rgba(229, 212, 183, 0.04);
+    font-size: 13px;
+    color: var(--rose-gold-bright);
+    letter-spacing: 0.1em;
+    position: relative;
+  }
+
+  .hero-meta-divider { width: 1px; height: 14px; background: var(--border); }
+
+  .hero-disclaimer {
+    margin: 32px auto 0;
+    max-width: 480px;
+    padding: 12px 20px;
+    background: rgba(229, 212, 183, 0.04);
+    border: 1px dashed rgba(229, 212, 183, 0.2);
+    border-radius: 4px;
+    font-size: 10.5px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    letter-spacing: 0.02em;
+    position: relative;
+  }
+
+  .update-notice {
+    margin: 16px auto 0;
+    max-width: 540px;
+    padding: 12px 24px;
+    background: rgba(201, 162, 138, 0.08);
+    border: 1px solid var(--rose-gold-soft);
+    border-radius: 4px;
+    font-size: 12px;
+    color: var(--rose-gold-bright);
+    line-height: 1.7;
+    letter-spacing: 0.03em;
+    position: relative;
+  }
+
+  .category-nav {
+    position: sticky;
+    top: 0;
+    border-bottom: 1px solid var(--border);
+    z-index: 100;
+    backdrop-filter: blur(10px);
+    background: rgba(19, 27, 41, 0.95);
+    padding: 16px 0;
+  }
+
+  .category-list {
+    display: flex;
+    gap: 4px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding: 0 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .category-list::-webkit-scrollbar { display: none; }
+
+  .category-btn {
+    flex-shrink: 0;
+    padding: 12px 20px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    color: var(--text-secondary);
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    letter-spacing: 0.05em;
+  }
+
+  .category-btn:hover {
+    border-color: var(--rose-gold);
+    color: var(--cream);
+    background: rgba(201, 162, 138, 0.06);
+  }
+
+  .category-btn.active {
+    background: var(--rose-gold);
+    color: var(--navy-deep);
+    border-color: var(--rose-gold);
+    font-weight: 600;
+  }
+
+  .prompts-section { padding: 60px 24px 100px; min-height: 60vh; }
+
+  .category-header {
+    text-align: center;
+    margin-bottom: 56px;
+    opacity: 0;
+    animation: fadeIn 0.6s ease forwards;
+  }
+
+  .category-header-eyebrow {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    letter-spacing: 0.3em;
+    color: var(--rose-gold-bright);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .category-header h2 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(24px, 4vw, 32px);
+    color: var(--cream);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    margin-bottom: 12px;
+  }
+
+  .category-header p {
+    font-size: 14px;
+    color: var(--text-muted);
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  .prompts-grid { display: grid; gap: 28px; }
+
+  .prompt-card {
+    background: linear-gradient(135deg, rgba(36, 50, 72, 0.6), rgba(26, 35, 50, 0.8));
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 32px 28px;
+    transition: all 0.4s ease;
+    opacity: 0;
+    animation: fadeIn 0.5s ease forwards;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .prompt-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--rose-gold), var(--champagne));
+    opacity: 0.7;
+  }
+
+  .prompt-card:hover {
+    border-color: var(--rose-gold);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+  }
+
+  .prompt-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    color: var(--rose-gold-bright);
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .prompt-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 19px;
+    color: var(--cream);
+    font-weight: 600;
+    margin-bottom: 12px;
+    line-height: 1.5;
+  }
+
+  .prompt-usage {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    padding: 10px 14px;
+    background: rgba(229, 212, 183, 0.04);
+    border-left: 2px solid var(--rose-gold-soft);
+    border-radius: 2px;
+  }
+
+  .prompt-usage-label {
+    color: var(--rose-gold-bright);
+    font-weight: 600;
+    margin-right: 6px;
+  }
+
+  .prompt-body {
+    background: var(--navy-deep);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 20px;
+    margin-bottom: 14px;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 13.5px;
+    line-height: 1.85;
+    color: var(--text-primary);
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    position: relative;
+  }
+
+  .copy-btn {
+    width: 100%;
+    padding: 13px 24px;
+    background: transparent;
+    border: 1px solid var(--rose-gold);
+    border-radius: 4px;
+    color: var(--rose-gold-bright);
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .copy-btn:hover { background: var(--rose-gold); color: var(--navy-deep); }
+  .copy-btn.copied {
+    background: rgba(229, 212, 183, 0.15);
+    border-color: var(--champagne);
+    color: var(--champagne);
+  }
+
+  .copy-icon::before { content: '📋'; margin-right: 4px; }
+  .copy-btn.copied .copy-icon::before { content: '✓'; }
+
+  footer {
+    background: var(--navy-deep);
+    border-top: 1px solid var(--border);
+    padding: 48px 24px;
+    text-align: center;
+  }
+
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    letter-spacing: 0.4em;
+    color: var(--rose-gold-bright);
+    margin-bottom: 12px;
+  }
+
+  footer p {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+    letter-spacing: 0.05em;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .prompt-card:nth-child(1) { animation-delay: 0.05s; }
+  .prompt-card:nth-child(2) { animation-delay: 0.1s; }
+  .prompt-card:nth-child(3) { animation-delay: 0.15s; }
+  .prompt-card:nth-child(4) { animation-delay: 0.2s; }
+
+  @media (max-width: 768px) {
+    .hero { padding: 60px 20px 40px; }
+    .prompts-section { padding: 40px 20px 60px; }
+    .prompt-card { padding: 24px 18px; }
+    .prompt-title { font-size: 17px; }
+    .prompt-body { padding: 16px; font-size: 12.5px; }
+  }
+
+  .toast {
+    position: fixed;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--rose-gold);
+    color: var(--navy-deep);
+    padding: 14px 28px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+    pointer-events: none;
+  }
+
+  .toast.show { transform: translateX(-50%) translateY(0); }
+
+  /* ============ LINKS SECTION ============ */
+  .links-block {
+    margin-top: 36px;
+    padding: 28px 24px;
+    background: rgba(229, 212, 183, 0.04);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    opacity: 0;
+    animation: fadeIn 0.5s ease forwards;
+    animation-delay: 0.4s;
+  }
+
+  .links-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 15px;
+    color: var(--rose-gold-bright);
+    font-weight: 600;
+    margin-bottom: 6px;
+    letter-spacing: 0.05em;
+  }
+
+  .links-eyebrow {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: var(--rose-gold-bright);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .links-subtitle {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+  }
+
+  .links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 12px;
+  }
+
+  .link-item {
+    display: block;
+    padding: 14px 16px;
+    background: var(--navy-deep);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .link-item:hover {
+    border-color: var(--rose-gold);
+    background: rgba(201, 162, 138, 0.08);
+    transform: translateY(-1px);
+  }
+
+  .link-name {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--cream);
+    margin-bottom: 4px;
+    line-height: 1.4;
+  }
+
+  .link-arrow {
+    color: var(--rose-gold-bright);
+    font-size: 12px;
+    margin-left: 8px;
+    flex-shrink: 0;
+  }
+
+  .link-desc {
+    font-size: 11.5px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  .link-tag {
+    display: inline-block;
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 100px;
+    background: rgba(201, 162, 138, 0.15);
+    color: var(--rose-gold-bright);
+    margin-right: 6px;
+    margin-bottom: 4px;
+    letter-spacing: 0.05em;
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-eyebrow">— AI Prompts Collection —</div>
+  <h1>お金管理AIプロンプト集</h1>
+  <p class="hero-sub">
+    「考える」から「行動する」への、最初の一歩。<br>
+    お使いのAIにそのまま貼って使える<br>
+    家計改善の実用プロンプト集
+  </p>
+  <div class="hero-disclaimer">
+    ※ AIの回答には一般的なデータが含まれます。<br>
+    最終判断は、あなたのご家庭の状況に合わせてご活用ください。
+  </div>
+</section>
+
+<nav class="category-nav">
+  <div class="category-list">
+    <button class="category-btn active" data-category="all">すべて</button>
+    <button class="category-btn" data-category="cat1">現在地を知る</button>
+    <button class="category-btn" data-category="cat2">固定費を削る</button>
+    <button class="category-btn" data-category="cat3">食費・日用品</button>
+    <button class="category-btn" data-category="cat4">教育費</button>
+    <button class="category-btn" data-category="cat5">投資・NISA・iDeCo</button>
+    <button class="category-btn" data-category="cat6">税金・給付金</button>
+    <button class="category-btn" data-category="cat7">住居・老後</button>
+    <button class="category-btn" data-category="cat8">夫婦・家族</button>
+  </div>
+</nav>
+
+<section class="prompts-section">
+  <div class="container">
+
+    <!-- =============== CAT 1 =============== -->
+    <div class="category-block" data-category="cat1">
+      <div class="category-header">
+        <div class="category-header-eyebrow">— Chapter 01 —</div>
+        <h2>現在地を知る</h2>
+        <p>家計改善の最初の一歩は、現状の見える化。AIに整理してもらえば一気にラクに。</p>
+      </div>
+      <div class="prompts-grid">
+
+        <div class="prompt-card">
+          
+          <h3 class="prompt-title">月の支出内訳を整理する</h3>
+          <div class="prompt-usage"><span class="prompt-usage-label">使い方：</span>銀行・クレカ明細をCSV／スクショ／コピペどれでもOK</div>
+          <div class="prompt-body">あなたは家計改善のプロFP。
+以下の支出データ（CSV／スクショ／箇条書き）を読み取って、
+「固定費／変動費／貯蓄投資／その他」の4カテゴリに分類し、
+合計金額と全体に占める割合を表形式で出力して。
+
+【支出データ】
+（ここにCSVの中身をコピペ、または画像をアップロード、または箇条書きで貼り付け）
+
+
+【私の状況・解決したいこと】
+
+
+最後に、家計の特徴と改善できそうなポイントを3つ教えて。</div>
+          <button class="copy-btn"><span class="copy-icon"></span>プロンプトをコピー</button>
+        </div>
+
+        <div class="prompt-card">
+          
+          <h3 class="prompt-title">家計の健康診断</h3>
+          <div class="prompt-usage"><span class="prompt-usage-label">使い方：</span>世帯情報を入力して、家計の偏差値を出してもらう</div>
+          <div class="prompt-body">我が家の家計を「健康診断」して。
+
+【世帯情報】
+・年齢：
+・家族構成：
+・年収：
+・住居：持ち家／賃貸・住居費：
+・現在の総資産：
+
+【月の収支】
+・世帯手取り：
+・固定費：
+・変動費：
+・貯蓄投資：
+
+【気になっていること】
+
+
+以下を教えて。
+1. 強みと弱み
+2. 危険信号があれば警告
+3. 改善優先度TOP3</div>
+          <button class="copy-btn"><span class="copy-icon"></span>プロンプトをコピー</button>
+        </div>
+
+      </div>
+
+      <div class="links-block">
+        <div class="links-eyebrow">— Useful Links —</div>
+        <div class="links-title">📚 お役立ちリンク｜現在地を知る</div>
+        <div class="links-subtitle">公的データで自分の家計の現在地を知る</div>
+        <div class="links-grid">
+          <a href="https://www.stat.go.jp/data/kakei/index.html" target="_blank" rel="noopener" class="link-item">
+            <div class="link-name">総務省 家計調査<span class="link-arrow">↗</span></div>
+            <div class="link-desc"><span class="link-tag">公式</span>同年代・同収入の家計平均が分かる</div>
+          </a>
+          <a href="https://www.e-stat.go.jp/" target="_blank" rel="noopener" class="link-item">
+            <div class="link-name">e-Stat 政府統計<span class="link-arrow">↗</span></div>
+            <div class="link-desc"><span class="link-tag">公式</span>収入・支出の統計データを地域別に検索</div>
+          </a>
+          <a href="https://www.shiruporuto.jp/public/document/container/yoron/" target="_blank" rel="noopener" class="link-item">
+            <div class="link-name">家計の金融行動世論調査<span class="link-arrow">↗</span></div>
+            <div class="link-desc"><span class="link-tag">公式</span>金融広報中央委員会・年代別貯蓄データ</div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- =============== CAT 2 =============== -->
+    <div class="category-block" data-category="cat2">
+      <div class="category-header">
+        <div class="category-header-eyebrow">— Chapter 02 —</div>
+        <h2>固定費を削る</h2>
+        <p>家計改善で一番効くのが固定費。AIに比較・診断してもらえば判断ミスも減らせる。</p>
+      </div>
+      <div class="prompts-grid">
+
+        <div class="prompt-card">
+          
+          <h3 class="prompt-title">通信費プランを比較する</h3>
+          <div class="prompt-usage"><span class="prompt-usage-label">使い方：</span>家族構成と現在の通信費を入力して最適プランを提案してもらう</div>
+          <div class="prompt-body">我が家に最適なスマホ・通信プランを提案して。
+
+【家族構成】
+
+
+【現在の契約】
+・キャリア：
+・月額合計：
+・光回線：
+
+【条件・希望】
+
+
+おすすめプラン3つを月額・年間費用・キャッシュバック目安と一緒に教えて。
+家族まとめてMNPするメリットも併記して。</div>
+          <button class="copy-btn"><span class="copy-icon"></span>プロンプトをコピー</button>
+        </div>
+
+        <div class="prompt-card">
+          
+          <h3 class="prompt-title">サブスク棚卸しシート</h3>
+          <div class="prompt-usage"><span class="prompt-usage-label">使い方：</span>クレカ明細をCSV／スクショ／コピペで貼り付け（定期課金チェック用）</div>
+          <div class="prompt-body">私が契約中のサブスクを以下に書きました。
+利用頻度や満足度を考慮して、続けるべき／解約すべき／代替案ありを判定して。
+
+【契約中のサブスク】
+1. サービス名： ／月額： ／利用頻度：
+2. サービス名： ／月額： ／利用頻度：
+
+【私の状況】
+
+
+判定結果を表形式で、解約した場合の月の節約額も合計で教えて。
+最後に「今すぐ解約すべき1つ」のおすすめを教えて。</div>
+          <button class="copy-btn"><span class="copy-icon"></span>プロンプトをコピー</button>
+        </div>
+
+        <div class="prompt-card">
+          
+          <h3 class="prompt-title">保険を見直す（FP診断）</h3>
+          <div class="prompt-usage"><span class="prompt-usage-label">使い方：</span>家計全体（貯蓄・収入・住居）を含めてFP視点で診断してもらう</div>
+          <div class="prompt-body">あなたは中立的な立場のプロFP。
+保険会社の営業トークではなく、家計全体を見て、本当に必要な保障だけに絞り込んでください。
+
+【契約中の保険】（生命・医療・がん・火災・学資・個人年金など全て）
+1. 保険名／月額／加入年齢／主な保障内容：
+2.
+3.
+
+【家族構成】
+・夫（年齢／職業／年収）：
+・私（年齢／職業／年収）：
+・子（年齢）：
+
+【貯蓄・資産】
+・生活防衛資金（普通預金）：
+・教育資金（学資保険／NISA等）：
+・老後資金（NISA／iDeCo／企業型DC）：
+・その他資産：
+・総資産：
+
+【住居】
+・持ち家／賃貸：
+・住宅ローン残高：
+・団信加入：あり／なし
+・住居費：月
+
+【公的保障の確認】
+・健康保険：会社員（健保組合）／国保／公務員
+・健保組合の付加給付：あり（自己負担上限◯円）／なし／不明
+・遺族年金の見込額：
+・傷病手当金：あり／なし
+
+【リスク許容度・希望】
+・最も不安なリスク：
+・絶対に守りたいこと：
+・現在の月の保険料合計：
+
+以下を診断してください。
+
+1. **生活防衛資金の充足度判定**
+　・月の生活費の何ヶ月分あるか
+　・公的保障＋貯蓄でカバーできる医療費・収入損失リスク
+
+2. **必要保障額の試算**
+　・夫の死亡保障（必要額：◯◯万円／現状：◯◯万円／過不足）
+　・私の死亡保障（同上）
+　・医療保障（高額療養費＋付加給付＋貯蓄でカバーできる範囲）
+　・就業不能保障（傷病手当金＋貯蓄でカバーできる期間）
+
+3. **各保険の必要度判定（理由つき）**
+　・必要：保険名と理由
+　・不要：保険名と理由（公的＋貯蓄で代替可能な根拠）
+　・要検討：保険名と検討すべきポイント
+
+4. **解約・見直しの優先順位**
+　・即解約していい保険TOP3（節約額付き）
+　・減額検討の保険
+　・解約タイミング・解約返戻金の確認方法
+
+5. **代替手段の提案**
+　・NISAで運用する場合のシミュレーション
+　・公的制度（高額療養費・付加給付）の活用
+　・貯蓄を厚くする方が合理的なケース
+
+6. **見直し後の理想形**
+　・月の保険料適正額
+　・年間の節約額
+　・浮いたお金の最適な使い道（貯蓄・運用配分）
+
+保険業界の常識（「医療保険は必須」等）に流されず、
+日本の社会保障制度を前提に、消費者目線で正直に診断してください。</div>
+          <button class="copy-btn"><span class="copy-icon"></span>プロンプトをコピー</button>
+        </div>
+
+      </div>
+
+      <div class="links-block">
+        <div class="links-eyebrow">— Useful Links —</div>
+        <div class="links-title">📚 お役立ちリンク｜固定費を削る</div>
+        <div class="links-subtitle">公式の制度・料金情報</div>
+        <div class="links-grid">
+          <a href="https://www.soumu.go.jp/menu_seisaku/ictseisaku/keitai_denwa/" target="_blank" rel="noopener" class="link-item">
+            <div class="link-name">総務省 携帯電話料金<span class="link-arrow">↗</span></div>
+            <div class="link-desc"><span class="link-tag">公式</span>料金プラン・乗り換えに関する公式情報</div>
+          </a>
+          <a href="https://www.enecho.meti.go.jp/category/electricity_and_gas/electric/electricity_liberalization/" target="_blank" rel="noopener" class="link-item">
+            <div class="link-name">電力小売自由化（資源エネルギー庁）<span class="link-arrow">↗</span></div>
+            <div class="link-desc"><span class="link-tag">公式</span>新電力の選び方・公式情報</div>
+          </a>
+          <a href="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/iryouhoken/iryouhoken01/index.html" target="_blank" rel="noopener" class="link-item">
+            <div class="link-name">公的医療保険制度（厚労省）<span class="link-arrow">↗</span></div>
+            <div class="link-desc"><span class="link-tag">公式</span>民間保険を判断する前にまず確認</div>
+          </a>
+          <a href="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/iryouhoken/juuyou/kougakuiryou/index.html" target="_blank" rel="noopener" class="link-item">
+            <div class="link-name">高額療養費制度（厚労省）<span class="link-arrow">↗</span></div>
+            <div class="link-desc"><span class="link-tag">公式</span>医療費の自己負担上限額を確認</div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- =============== CAT 3 =============== -->
+    <div class="category-block" data-category="cat3">
+      <div class="category-header">
+        <div class="category-header-eyebrow">— Chapter 03 —</div>
+        <h2>食費・日用品</h2>
+        <p>毎日の家事と家計のルーティンを、AIで仕組み化。</p>
+      </div>
+      <div class="prompts-grid">
+
+        <div class="prompt-card">
+          
+          <h3 class="prompt-title">1週間の献立を作る</h3>
+          <div class="prompt-usage"><span class="prompt-usage-label">使い方：</span>家族構成と冷蔵庫の食材を伝えて、週末まとめ買いの前に</div>
+          <div class="prompt-body">1週間献立を作って。
+
+【家族構成】
+
+
+【苦手な食材／好きな食材】
+
+
+【条件・予算】
+
+
+【冷蔵庫の在庫】
+
+
+以下を出力して。
+1. 月〜日の主菜と副菜（簡単な作り方も）
+2. まとめて買う食材リスト
+3. 想定費用合計
+4. 「週末リセット日」のメニュー案2パターン</div>
+          <button class="copy-btn"><span class="copy-icon"></span>プロンプトをコピー</button>
+        </div>
+
+        <div class="prompt-card">
+          
+          <h3 class="prompt-title">月末家計振り返り</h3>
+          <div class="prompt-usage"><span class="prompt-usage-label">使い方：</span>月末に当月の支出データを貼り付けて、振り返りと来月の改善案</div>
+          <div class="prompt-body">今月の家計データを以下にまとめました。
+振り返りと来月の改善案を教えて。
+
+【今月の支出（カテゴリ別）】
+・固定費：
+・食費：
+・日用品：
+・教育費：
+・趣味・交際費：
+・その他：
+合計：
+
+【今月のハイライト】
+
+
+【世帯月収】
+
+【貯蓄・投資】
+
+【私が達成したい目標】
+
+
+以下を出力して。
+1. 全体の感想（収支バランス・先月比など）
+2. 良かった点3つ
+3. 改善できそうな点3つ
+4. 来月のアクション3つ
+5. 目標達成度（％）</div>
+          <button class="copy-btn"><span class="copy-icon"></span>プロンプトをコピー</button>
+        </div>
+
+      </div>
+
+      <div class="links-block">
+        <div class="links-eyebrow">— Useful Links —</div>
+        <div class="links-title">📚 お役立ちリンク｜食費・日用品</div>
+        <div class="links-subtitle">食事・栄養・食品ロスの公式情報</div>
+        <div class="links-grid">
+          <a href="https://www.maff.go.jp/j/syokuiku/zissen_navi/balance/" target="_blank" rel="noopener" class="link-item">
+            <div class="link-name">食事バランスガイド（農水省）<span class="link-arrow">↗</span></div>
+            <div class="link-desc"><span class="link-tag">公式</span>1日の食事バランスを公的指標で確認</div>
+          </a>
+          <a href="https://www.no-foodloss.caa.go.jp/" target="_blank" rel="noopener" class="link-item">
+            <div class="link-name">食品ロス削減（消費者庁）<span class="link-arrow">↗</span></div>
+            <div class="link-desc"><span class="link-tag">公式</span>家庭で食材ロスを減らすコツ</div>
+          </a>
+          <a href="https://www.stat.go.jp/data/kakei/" target="_blank" rel="noopener" class="link-item">
+            <div class="link-name">食費の家計統計（総務省）<span class="link-arrow">↗</span></div>
+            <div class="link-desc"><span class="link-tag">公式</span>世帯別の食費平均を確認</div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- =============== CAT 4 =============== -->
+    <div class="category-block" data-category="cat4">
+      <div class="category-header">
+        <div class="category-header-eyebrow">— Chapter 04 —</div>
+        <h2>教育費</h2>
+        <p>子どもの将来にかかるお金を、不安から「具体的なプラン」へ。</p>
+      </div>
+      <div class="prompts-grid">
+
+        <div class="prompt-card">
+          
+          <h3 class="prompt-title">教育費シミュレーション</h3>
+          <div class="prompt-usage"><span class="prompt-usage-label">使い方：</span>子どもの年齢と進学希望を伝えて、必要金額と貯蓄ペースを試算</div>
+          <div class="prompt-body">あなたは教育費プランナー。
+我が家の教育費を試算して。
+
+【子どもの情報】
+
+
+【希望進路パターン】
+・幼稚園：
+・小学校：
+・中学校：
+・高校：
+・大学：
+
+【現在の貯蓄】
+・教育資金：
+・NISA：
+
+【気になっていること】
+
+
+以下を出力して。
+1. 子どもごとの大学卒業までの総教育費
+2. 必要な月々の貯蓄ペース
+3. 児童手当をフル活用した場合の不足額
+4. NISA・学資保険の使い分け案
+5. 「これだけは始めておきたい」優先アクション3つ</div>
+          <button class="copy-btn"><span class="copy-icon"></span>プロンプトをコピー</button>
+        </div>
+
+        <div class="prompt-card">
+          
+          <h3 class="prompt-title">児童手当の使い方</h3>
+          <div class="prompt-usage"><span class="prompt-usage-label">使い方：</span>児童手当を全額貯蓄にすべきか、運用すべきか相談</div>
+          <div class="prompt-body">児童手当の最適な使い方を教えて。
+
+【家庭情報】
+・子の年齢：
+・現在の総貯蓄：
+・教育資金専用口座：
+・NISAの有無：
+
+【現在の児童手当の使い道】
+
+
+【知りたいこと】
+
+
+以下を教えて。
+1. 子が18歳になるまでの児童手当総額
+2. 全額貯蓄した場合の到達金額
+3. 全額NISA運用した場合の予想金額
+4. 預金とNISAのおすすめ配分
+5. 「児童手当だけで大学費用を作る」プラン</div>
+          <button class="copy-btn"><span class="copy-icon"></span>プロンプトをコピー</button>
+        </div>
+
+      </div>
+
+      <div class="links-block">
+        <div class="links-eyebrow">— Useful Links —</div>
+        <div class="links-title">📚 お役立ちリンク｜教育費</div>
+        <div class="links-subtitle">教育費・奨学金の公式データ</div>
+        <div class="links-grid">
+          <a href="https://www.mext.go.jp/b_menu/toukei/chousa03/gakushuuhi/index.htm" target="_blank" rel="noopener" class="link-item">
+            <div class="link-name">子供の学習費調査（文科省）<span class="link-arrow">↗</span></div>
+            <div class="link-desc"><span class="link-tag">公式</span>幼稚園〜高校までの教育費平均</div>
+          </a>
+          <a href="https://www.jfc.go.jp/n/findings/kyoiku.html" target="_blank" rel="noopener" class="link-item">
+            <div class="link-name">教育費負担の実態調査（日本政策金融公庫）<span class="link-arrow">↗</span></div>
+            <div class="link-desc"><span class="link-tag">公式</span>大学までの教育費試算データ</div>
+          </a>
+          <a href="https://www.jasso.go.jp/shogakukin/" target="_blank" rel="noopener" class="link-item">
+            <div class="link-name">JASSO 奨学金<span class="link-arrow">↗</span></div>
+            <div class="link-desc"><span class="link-tag">公式</span>日本学生支援機構の奨学金情報</div>
+          </a>
+          <a href="https://www.cfa.go.jp/policies/jidouteate/" target="_blank" rel="noopener" class="link-item">
+            <div class="link-name">児童手当（こども家庭庁）<span class="link-arrow">↗</span></div>
+            <div class="link-desc"><span class="link-tag">公式</span>受給額・申請方法の最新情報</div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- =============== CAT 5 =============== -->
+    <div class="category-block" data-category="cat5">
+      <div class="category-header">
+        <div class="category-header-eyebrow">— Chapter 05 —</div>
+        <h2>投資・NISA・iDeCo</h2>
+        <p>「お金を増やす」入口を、初心者でも迷わず選べるように整理。</p>
+      </div>
+      <div class="prompts-grid">
+
+        <div class="prompt-card">
+          
+          <h3 class="prompt-title">NISA・iDeCo どっちから始める</h3>
+          <div class="prompt-usage"><span class="prompt-usage-label">使い方：</span>始めるか迷っている人向け・優先順位を判断</div>
+          <div class="prompt-body">私の状況に最適なNISA・iDeCoの活用プランを教えて。
+
+【私の情報】
+・年齢：
+・年収：
+・働き方：
+・配偶者の年収：
+・子の年齢：
+
+【現在の運用】
+・NISA：（している／してない）
+・iDeCo：（している／してない）
+
+【ゴール】
+
+
+以下を教えて。
+1. NISAとiDeCo、優先度はどっち？理由は？
+2. 月いくら積み立てるのが現実的？
+3. iDeCoの節税効果（年いくら戻る？）
+4. 始めるベストなタイミング
+5. 「やめておいたほうがいい」NG行動3つ</div>
+          <button class="copy-btn"><span class="copy-icon"></span>プロンプトをコピー</button>
+        </div>
+
+        <div class="prompt-card">
+          
+          <h3 class="prompt-title">NISA推奨銘柄を聞く</h3>
+          <div class="prompt-usage"><span class="prompt-usage-label">使い方：</span>NISA初心者向けの定番銘柄を教えてもらう</div>
+          <div class="prompt-body">新NISAで積立する銘柄を選びたい。
+
+【私の情報】
+・年齢：
+・投資経験：
+・リスク許容度：低／中／高
+・運用期間：
+・月の積立予定額：
+
+【希望】
+
+
+以下を教えて。
+1. つみたて投資枠で買うべき銘柄3つ
+2. 成長投資枠で買うべき銘柄3つ
+3. それぞれの特徴と過去リターン
+4. 配分の目安（％）
+5. 「絶対に買わないほうがいい」NG銘柄</div>
+          <button class="copy-btn"><span class="copy-icon"></span>プロンプトをコピー</button>
+        </div>
+
+        <div class="prompt-card">
+          
+          <h3 class="prompt-title">投資の暴落シナリオ対策</h3>
+          <div class="prompt-usage"><span class="prompt-usage-label">使い方：</span>もし市場が暴落したらどうするか、心構えを整理</div>
+          <div class="prompt-body">市場が暴落した場合の対応を整理しておきたい。
+
+【私の運用】
+・NISA積立：月
+・iDeCo：月
+・現在の評価額：
+
+【私の状況】
+・運用残り期間：
+・年齢：
+
+以下を教えて。
+1. 過去の暴落事例と回復までの期間
+2. 暴落時にやってはいけない3つ
+3. 暴落時にやるべき3つ
+4. 「これだけは決めておく」ルール5つ
+5. メンタル維持のコツ</div>
+          <button class="copy-btn"><span class="copy-icon"></span>プロンプトをコピー</button>
+        </div>
+
+      </div>
+
+      <div class="links-block">
+        <div class="links-eyebrow">— Useful Links —</div>
+        <div class="links-title">📚 お役立ちリンク｜投資・NISA・iDeCo</div>
+        <div class="links-subtitle">国の公式情報・シミュレーション</div>
+        <div class="links-grid">
+          <a href="https://www.fsa.go.jp/policy/nisa2/index.html" target="_blank" rel="noopener" class="link-item">
+            <div class="link-name">NISA特設サイト（金融庁）<span class="link-arrow">↗</span></div>
+            <div class="link-desc"><span class="link-tag">公式</span>新NISA制度の正しい情報</div>
+          </a>
+          <a href="https://www.ideco-koushiki.jp/" target="_blank" rel="noopener" class="link-item">
+            <div class="link-name">iDeCo公式サイト<span class="link-arrow">↗</span></div>
+            <div class="link-desc"><span class="link-tag">公式</span>節税シミュレーションあり</div>
+          </a>
+          <a href="https://www.fsa.go.jp/policy/nisa2/moneyplan_sim/index.html" target="_blank" rel="noopener" class="link-item">
+            <div class="link-name">資産運用シミュレーション（金融庁）<span class="link-arrow">↗</span></div>
+            <div class="link-desc"><span class="link-tag">公式</span>運用試算ツール（広告なし）</div>
+          </a>
+          <a href="https://www.shiruporuto.jp/" target="_blank" rel="noopener" class="link-item">
+            <div class="link-name">知るぽると（金融広報中央委員会）<span class="link-arrow">↗</span></div>
+            <div class="link-desc"><span class="link-tag">公式</span>投資の基礎を中立に学べる</div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- =============== CAT 6 =============== -->
+    <div class="category-block" data-category="cat6">
+      <div class="category-header">
+        <div class="category-header-eyebrow">— Chapter 06 —</div>
+        <h2>税金・給付金</h2>
+        <p>知らないと損する制度をAIに棚卸ししてもらう。</p>
+      </div>
+      <div class="prompts-grid">
+
+        <div class="prompt-card">
+          
+          <h3 class="prompt-title">ふるさと納税の限度額</h3>
+          <div class="prompt-usage"><span class="prompt-usage-label">使い方：</span>年収と家族構成から最適な寄付額を計算</div>
+          <div class="prompt-body">ふるさと納税の限度額と最適活用法を教えて。
+
+【家族情報】
+・夫の年収：
+・私の年収：
+・子の人数・年齢：
+・住宅ローン控除：
+・iDeCo：月
+・医療費控除：
+
+以下を教えて。
+1. 夫の限度額
+2. 私の限度額
+3. 世帯としての最大活用方法
+4. ワンストップ特例 vs 確定申告どちらがいいか
+5. おすすめ返礼品の選び方</div>
+          <button class="copy-btn"><span class="copy-icon"></span>プロンプトをコピー</button>
+        </div>
+
+        <div class="prompt-card">
+          
+          <h3 class="prompt-title">医療費控除を申請する</h3>
+          <div class="prompt-usage"><span class="prompt-usage-label">使い方：</span>1年の医療費を入れて、控除額を計算</div>
+          <div class="prompt-body">医療費控除の申請をすべきか教えて。
+
+【今年の家族の医療費】
+・私：
+・夫：
+・子：
+・合計：
+
+【含めるか迷うもの】
+
+
+【世帯所得】
+・夫年収：
+・私年収：
+
+以下を教えて。
+1. 控除対象になる金額
+2. 還付金の目安
+3. セルフメディケーション税制との比較
+4. 必要な書類リスト
+5. 確定申告の手順</div>
+          <button class="copy-btn"><span class="copy-icon"></span>プロンプトをコピー</button>
+        </div>
+
+        <div class="prompt-card">
+          
+          <h3 class="prompt-title">健康保険組合の付加給付</h3>
+          <div class="prompt-usage"><span class="prompt-usage-label">使い方：</span>会社の健保組合の隠れ給付金を調べる手順</div>
+          <div class="prompt-body">夫（または私）の健康保険組合の付加給付について調べたい。
+
+【加入している健康保険組合】
+・名称：
+・会社名：
+・大企業／中小／公務員：
+
+以下を教えて。
+1. 健保組合の付加給付とは何か
+2. 一般的にあるサービス（一部負担還元金等）
+3. 申請しないともらえないお金の例
+4. 自分の組合の給付内容を調べる方法
+5. 過去にさかのぼって申請できる場合の手順</div>
+          <button class="copy-btn"><span class="copy-icon"></span>プロンプトをコピー</button>
+        </div>
+
+      </div>
+
+      <div class="links-block">
+        <div class="links-eyebrow">— Useful Links —</div>
+        <div class="links-title">📚 お役立ちリンク｜税金・給付金</div>
+        <div class="links-subtitle">公的機関の制度情報・申告ツール</div>
+        <div class="links-grid">
+          <a href="https://www.soumu.go.jp/main_sosiki/jichi_zeisei/czaisei/czaisei_seido/furusato/" target="_blank" rel="noopener" class="link-item">
+            <div class="link-name">ふるさと納税ポータル（総務省）<span class="link-arrow">↗</span></div>
+            <div class="link-desc"><span class="link-tag">公式</span>制度の正確な情報・限度額の考え方</div>
+          </a>
+          <a href="https://www.keisan.nta.go.jp/kyoutu/ky/sm/top" target="_blank" rel="noopener" class="link-item">
+            <div class="link-name">確定申告書作成コーナー（国税庁）<span class="link-arrow">↗</span></div>
+            <div class="link-desc"><span class="link-tag">公式</span>e-Taxで自宅から申告完了</div>
+          </a>
+          <a href="https://www.kyoukaikenpo.or.jp/" target="_blank" rel="noopener" class="link-item">
+            <div class="link-name">協会けんぽ<span class="link-arrow">↗</span></div>
+            <div class="link-desc"><span class="link-tag">公式</span>給付金の申請窓口（中小企業勤務者）</div>
+          </a>
+          <a href="https://www.kenporen.com/" target="_blank" rel="noopener" class="link-item">
+            <div class="link-name">健康保険組合連合会<span class="link-arrow">↗</span></div>
+            <div class="link-desc"><span class="link-tag">公式</span>健保組合の付加給付情報</div>
+          </a>
+          <a href="https://www.gov-online.go.jp/" target="_blank" rel="noopener" class="link-item">
+            <div class="link-name">政府広報オンライン<span class="link-arrow">↗</span></div>
+            <div class="link-desc"><span class="link-tag">公式</span>給付金・補助金の最新情報</div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- =============== CAT 7 =============== -->
+    <div class="category-block" data-category="cat7">
+      <div class="category-header">
+        <div class="category-header-eyebrow">— Chapter 07 —</div>
+        <h2>住居・老後</h2>
+        <p>家計最大の固定費と、漠然とした老後不安を整理。</p>
+      </div>
+      <div class="prompts-grid">
+
+        <div class="prompt-card">
+          
+          <h3 class="prompt-title">住宅ローンの借り換え判断</h3>
+          <div class="prompt-usage"><span class="prompt-usage-label">使い方：</span>金利情報を入れて借り換えメリットを試算</div>
+          <div class="prompt-body">住宅ローン借り換えのメリットを試算して。
+
+【現在の住宅ローン】
+・残高：
+・残期間：
+・金利：（変動／固定）
+・月返済額：
+・借入時期：
+
+【借り換え候補】
+・銀行名：
+・金利：
+・諸費用：
+
+以下を教えて。
+1. 借り換えで節約できる総額
+2. 諸費用を引いた実質メリット
+3. 借り換えの損益分岐
+4. 借り換えに向いてる条件・向いてない条件
+5. うちの場合のおすすめ判断</div>
+          <button class="copy-btn"><span class="copy-icon"></span>プロンプトをコピー</button>
+        </div>
+
+        <div class="prompt-card">
+          
+          <h3 class="prompt-title">老後資金シミュレーション</h3>
+          <div class="prompt-usage"><span class="prompt-usage-label">使い方：</span>必要金額と、現状で足りるか試算</div>
+          <div class="prompt-body">老後資金が足りるか試算して。
+
+【夫婦情報】
+
+
+【予想収入】
+・夫の年金：月（試算）
+・私の年金：月
+・退職金：
+
+【希望ライフスタイル】
+・老後の月の生活費：
+・趣味・旅行費：年
+・住居費：
+
+【現在の資産】
+・預金：
+・NISA：
+・iDeCo：
+
+以下を教えて。
+1. 老後の月の収支
+2. 必要な老後資金の総額
+3. 現状で足りるか・不足額
+4. あと月いくら積み立てれば足りるか
+5. 不足を埋めるアクションプラン</div>
+          <button class="copy-btn"><span class="copy-icon"></span>プロンプトをコピー</button>
+        </div>
+
+      </div>
+
+      <div class="links-block">
+        <div class="links-eyebrow">— Useful Links —</div>
+        <div class="links-title">📚 お役立ちリンク｜住居・老後</div>
+        <div class="links-subtitle">公的機関の年金・住宅ローン情報</div>
+        <div class="links-grid">
+          <a href="https://www.nenkin.go.jp/n_net/" target="_blank" rel="noopener" class="link-item">
+            <div class="link-name">ねんきんネット<span class="link-arrow">↗</span></div>
+            <div class="link-desc"><span class="link-tag">公式</span>自分の年金見込額を確認</div>
+          </a>
+          <a href="https://nenkin-shisan.mhlw.go.jp/" target="_blank" rel="noopener" class="link-item">
+            <div class="link-name">公的年金シミュレーター（厚労省）<span class="link-arrow">↗</span></div>
+            <div class="link-desc"><span class="link-tag">公式</span>働き方別の年金試算ツール</div>
+          </a>
+          <a href="https://www.flat35.com/" target="_blank" rel="noopener" class="link-item">
+            <div class="link-name">フラット35（住宅金融支援機構）<span class="link-arrow">↗</span></div>
+            <div class="link-desc"><span class="link-tag">公式</span>公的機関の固定金利住宅ローン</div>
+          </a>
+          <a href="https://www.mlit.go.jp/jutakukentiku/house/jutakukentiku_house_tk2_000017.html" target="_blank" rel="noopener" class="link-item">
+            <div class="link-name">住宅ローン控除（国交省）<span class="link-arrow">↗</span></div>
+            <div class="link-desc"><span class="link-tag">公式</span>住宅ローン控除の制度説明</div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- =============== CAT 8 =============== -->
+    <div class="category-block" data-category="cat8">
+      <div class="category-header">
+        <div class="category-header-eyebrow">— Chapter 08 —</div>
+        <h2>夫婦・家族</h2>
+        <p>家計の話は、家族との関係も整える。揉めずに進む台本をAIに作ってもらう。</p>
+      </div>
+      <div class="prompts-grid">
+
+        <div class="prompt-card">
+          
+          <h3 class="prompt-title">夫婦お金会議の議事進行</h3>
+          <div class="prompt-usage"><span class="prompt-usage-label">使い方：</span>夫婦お金会議の議題と進行案</div>
+          <div class="prompt-body">夫婦でお金会議を行いたい。
+今月の議題と議事進行を作って。
+
+【今月の状況】
+・先月の家計収支：
+・今月起きたお金関係の出来事：
+・直近の悩み：
+・夫婦で話したいテーマ：
+
+【会議の目的】
+
+
+【私たち夫婦の特徴】
+
+
+以下を出力して。
+1. 会議のアジェンダ（時間配分付き）
+2. 各議題の話し合いの進め方
+3. 揉めそうなポイントの回避策
+4. 議事録テンプレ
+5. 次月までの宿題3つ</div>
+          <button class="copy-btn"><span class="copy-icon"></span>プロンプトをコピー</button>
+        </div>
+
+        <div class="prompt-card">
+          
+          <h3 class="prompt-title">子どもにお金の話をする</h3>
+          <div class="prompt-usage"><span class="prompt-usage-label">使い方：</span>子どもの年齢に合わせたお金の話し方</div>
+          <div class="prompt-body">子どもにお金の話をするための、年齢に合わせた説明方法を教えて。
+
+【子どもの情報】
+・年齢：
+・性格：
+・お金への関心度：
+
+【話したいテーマ】
+
+
+以下を出力して。
+1. 年齢にあった伝え方のコツ
+2. 具体的なフレーズ例3つ
+3. 子どもが質問してきそうなことと答え方
+4. 一緒にやれるアクション
+5. 避けたいNGワード</div>
+          <button class="copy-btn"><span class="copy-icon"></span>プロンプトをコピー</button>
+        </div>
+
+        <div class="prompt-card">
+          
+          <h3 class="prompt-title">夫が家計に協力してくれない</h3>
+          <div class="prompt-usage"><span class="prompt-usage-label">使い方：</span>家計の話に巻き込めない夫を動かすアプローチ</div>
+          <div class="prompt-body">夫が家計改善に協力してくれない。アプローチ方法を教えて。
+
+【現状】
+・夫の性格：
+・お金の話への反応：
+・夫の管理項目：
+・私の管理項目：
+
+【私が困っていること】
+
+
+【これまで試したこと】
+
+
+以下を教えて。
+1. 夫タイプ別のアプローチ
+2. 「協力しよう」と思わせる言葉
+3. 巻き込むための小さなステップ
+4. NG行動・NGワード
+5. 夫を動かす最初の一手</div>
+          <button class="copy-btn"><span class="copy-icon"></span>プロンプトをコピー</button>
+        </div>
+
+      </div>
+
+      <div class="links-block">
+        <div class="links-eyebrow">— Useful Links —</div>
+        <div class="links-title">📚 お役立ちリンク｜夫婦・家族</div>
+        <div class="links-subtitle">公的機関の無料相談・お金教育</div>
+        <div class="links-grid">
+          <a href="https://www.jafp.or.jp/confer/" target="_blank" rel="noopener" class="link-item">
+            <div class="link-name">日本FP協会 無料相談<span class="link-arrow">↗</span></div>
+            <div class="link-desc"><span class="link-tag">公式</span>体験型ファイナンシャル・プランニング相談</div>
+          </a>
+          <a href="https://www.kokusen.go.jp/" target="_blank" rel="noopener" class="link-item">
+            <div class="link-name">国民生活センター<span class="link-arrow">↗</span></div>
+            <div class="link-desc"><span class="link-tag">公式</span>お金・契約のトラブル無料相談</div>
+          </a>
+          <a href="https://www.shiruporuto.jp/public/" target="_blank" rel="noopener" class="link-item">
+            <div class="link-name">知るぽると 子どもお金教育<span class="link-arrow">↗</span></div>
+            <div class="link-desc"><span class="link-tag">公式</span>金融広報中央委員会・年齢別教材</div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="toast" id="toast">✓ プロンプトをコピーしました</div>
+
+<footer>
+  <p style="opacity:0.5;">© 2026 Pon</p>
+</footer>
+
+<script>
+  const categoryButtons = document.querySelectorAll('.category-btn');
+  const categoryBlocks = document.querySelectorAll('.category-block');
+
+  categoryButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      categoryButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const target = btn.dataset.category;
+      categoryBlocks.forEach(block => {
+        if (target === 'all' || block.dataset.category === target) {
+          block.style.display = 'block';
+          const cards = block.querySelectorAll('.prompt-card, .category-header');
+          cards.forEach(card => {
+            card.style.animation = 'none';
+            card.offsetHeight;
+            card.style.animation = '';
+          });
+        } else {
+          block.style.display = 'none';
+        }
+      });
+      window.scrollTo({
+        top: document.querySelector('.prompts-section').offsetTop - 80,
+        behavior: 'smooth'
+      });
+    });
+  });
+
+  const copyButtons = document.querySelectorAll('.copy-btn');
+  const toast = document.getElementById('toast');
+  let toastTimeout;
+
+  copyButtons.forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const card = btn.closest('.prompt-card');
+      const promptText = card.querySelector('.prompt-body').innerText;
+      try {
+        await navigator.clipboard.writeText(promptText);
+        btn.classList.add('copied');
+        const span = btn.querySelector('.copy-icon').parentNode;
+        span.lastChild.textContent = 'コピーしました';
+        setTimeout(() => {
+          btn.classList.remove('copied');
+          span.lastChild.textContent = 'プロンプトをコピー';
+        }, 2000);
+        clearTimeout(toastTimeout);
+        toast.classList.add('show');
+        toastTimeout = setTimeout(() => toast.classList.remove('show'), 2400);
+      } catch (err) {
+        const textArea = document.createElement('textarea');
+        textArea.value = promptText;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        clearTimeout(toastTimeout);
+        toast.classList.add('show');
+        toastTimeout = setTimeout(() => toast.classList.remove('show'), 2400);
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
