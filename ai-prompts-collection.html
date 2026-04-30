@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>お金管理AIプロンプト集</title>
+<title>家計管理AIプロンプト集</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -93,22 +93,6 @@
     position: relative;
   }
 
-  .hero-meta {
-    display: inline-flex;
-    align-items: center;
-    gap: 16px;
-    padding: 12px 28px;
-    border: 1px solid var(--border);
-    border-radius: 100px;
-    background: rgba(229, 212, 183, 0.04);
-    font-size: 13px;
-    color: var(--rose-gold-bright);
-    letter-spacing: 0.1em;
-    position: relative;
-  }
-
-  .hero-meta-divider { width: 1px; height: 14px; background: var(--border); }
-
   .hero-disclaimer {
     margin: 32px auto 0;
     max-width: 480px;
@@ -120,20 +104,6 @@
     color: var(--text-muted);
     line-height: 1.6;
     letter-spacing: 0.02em;
-    position: relative;
-  }
-
-  .update-notice {
-    margin: 16px auto 0;
-    max-width: 540px;
-    padding: 12px 24px;
-    background: rgba(201, 162, 138, 0.08);
-    border: 1px solid var(--rose-gold-soft);
-    border-radius: 4px;
-    font-size: 12px;
-    color: var(--rose-gold-bright);
-    line-height: 1.7;
-    letter-spacing: 0.03em;
     position: relative;
   }
 
@@ -252,15 +222,6 @@
     border-color: var(--rose-gold);
     transform: translateY(-2px);
     box-shadow: var(--shadow);
-  }
-
-  .prompt-number {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 13px;
-    letter-spacing: 0.2em;
-    color: var(--rose-gold-bright);
-    margin-bottom: 8px;
-    display: block;
   }
 
   .prompt-title {
@@ -391,109 +352,13 @@
   }
 
   .toast.show { transform: translateX(-50%) translateY(0); }
-
-  /* ============ LINKS SECTION ============ */
-  .links-block {
-    margin-top: 36px;
-    padding: 28px 24px;
-    background: rgba(229, 212, 183, 0.04);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    opacity: 0;
-    animation: fadeIn 0.5s ease forwards;
-    animation-delay: 0.4s;
-  }
-
-  .links-title {
-    font-family: 'Noto Serif JP', serif;
-    font-size: 15px;
-    color: var(--rose-gold-bright);
-    font-weight: 600;
-    margin-bottom: 6px;
-    letter-spacing: 0.05em;
-  }
-
-  .links-eyebrow {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 11px;
-    letter-spacing: 0.3em;
-    color: var(--rose-gold-bright);
-    text-transform: uppercase;
-    margin-bottom: 4px;
-  }
-
-  .links-subtitle {
-    font-size: 12px;
-    color: var(--text-muted);
-    margin-bottom: 20px;
-  }
-
-  .links-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 12px;
-  }
-
-  .link-item {
-    display: block;
-    padding: 14px 16px;
-    background: var(--navy-deep);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    color: var(--text-primary);
-    text-decoration: none;
-    transition: all 0.3s ease;
-    position: relative;
-  }
-
-  .link-item:hover {
-    border-color: var(--rose-gold);
-    background: rgba(201, 162, 138, 0.08);
-    transform: translateY(-1px);
-  }
-
-  .link-name {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--cream);
-    margin-bottom: 4px;
-    line-height: 1.4;
-  }
-
-  .link-arrow {
-    color: var(--rose-gold-bright);
-    font-size: 12px;
-    margin-left: 8px;
-    flex-shrink: 0;
-  }
-
-  .link-desc {
-    font-size: 11.5px;
-    color: var(--text-muted);
-    line-height: 1.6;
-  }
-
-  .link-tag {
-    display: inline-block;
-    font-size: 10px;
-    padding: 2px 8px;
-    border-radius: 100px;
-    background: rgba(201, 162, 138, 0.15);
-    color: var(--rose-gold-bright);
-    margin-right: 6px;
-    margin-bottom: 4px;
-    letter-spacing: 0.05em;
-  }
 </style>
 </head>
 <body>
 
 <section class="hero">
   <div class="hero-eyebrow">— AI Prompts Collection —</div>
-  <h1>お金管理AIプロンプト集</h1>
+  <h1>家計管理AIプロンプト集</h1>
   <p class="hero-sub">
     「考える」から「行動する」への、最初の一歩。<br>
     お使いのAIにそのまま貼って使える<br>
@@ -532,74 +397,89 @@
       <div class="prompts-grid">
 
         <div class="prompt-card">
-          
           <h3 class="prompt-title">月の支出内訳を整理する</h3>
-          <div class="prompt-usage"><span class="prompt-usage-label">使い方：</span>銀行・クレカ明細をCSV／スクショ／コピペどれでもOK</div>
-          <div class="prompt-body">あなたは家計改善のプロFP。
-以下の支出データ（CSV／スクショ／箇条書き）を読み取って、
-「固定費／変動費／貯蓄投資／その他」の4カテゴリに分類し、
-合計金額と全体に占める割合を表形式で出力して。
+          <div class="prompt-usage"><span class="prompt-usage-label">使い方：</span>銀行・クレカ明細をCSV／スクショ／コピペで貼り付け</div>
+          <div class="prompt-body">あなたは中立的な家計改善FP。商品の販売はせず、家計簿アプリの使い方も知り尽くしている前提で答えて。
+
+以下の支出データを読み取り、次の手順で出力して。
+
+【手順1：分類】
+「①固定費（住居・通信・保険・サブスク・教育費の月謝など毎月固定）／②変動費（食費・日用品・交際費・被服など）／③貯蓄・投資（NISA・iDeCo・定期積立）／④特別費（年払い・冠婚葬祭・家電など月にならせない）」の4カテゴリに分類。
+
+【手順2：出力】
+（A）カテゴリ別の合計金額・全体に占める割合を表で出力。
+（B）「同年代・同収入の家計平均」と比較して、＋1万円以上ズレているカテゴリを赤字で警告。
+（C）使途不明金（カテゴリ分類できない金額）を明示。
+（D）二重計上・分類ミスの可能性がある明細をリストアップ。
+
+【手順3：改善ポイント】
+今月の家計の特徴を1行で要約したうえで、
+「今月から削れる費用TOP3」を、削減見込み額・難易度（★★★★★）・最初の一歩（行動）の3点セットで提示。
+※「節約しましょう」のような抽象論ではなく、解約URLや窓口名まで具体的に。
 
 【支出データ】
-（ここにCSVの中身をコピペ、または画像をアップロード、または箇条書きで貼り付け）
+（CSV／スクショ／箇条書きをここに貼る）
 
-
-【私の状況・解決したいこと】
-
-
-最後に、家計の特徴と改善できそうなポイントを3つ教えて。</div>
+【私の世帯情報】
+・世帯手取り月収：
+・家族構成：
+・住居：持ち家／賃貸
+・改善したい悩みTOP1：</div>
           <button class="copy-btn"><span class="copy-icon"></span>プロンプトをコピー</button>
         </div>
 
         <div class="prompt-card">
-          
-          <h3 class="prompt-title">家計の健康診断</h3>
-          <div class="prompt-usage"><span class="prompt-usage-label">使い方：</span>世帯情報を入力して、家計の偏差値を出してもらう</div>
-          <div class="prompt-body">我が家の家計を「健康診断」して。
+          <h3 class="prompt-title">家計の健康診断（偏差値判定）</h3>
+          <div class="prompt-usage"><span class="prompt-usage-label">使い方：</span>世帯情報を入力して、家計の偏差値と危険信号をチェック</div>
+          <div class="prompt-body">あなたは家計診断のFP。
+我が家の家計を「健康診断」して、放置すると将来詰むポイントを優しい言葉ではなく事実ベースで指摘して。
 
 【世帯情報】
-・年齢：
-・家族構成：
-・年収：
-・住居：持ち家／賃貸・住居費：
-・現在の総資産：
+・年齢（夫／私）：
+・家族構成・子の年齢：
+・世帯年収（額面／手取り）：
+・住居：持ち家・住宅ローン残高／賃貸・家賃
+・現在の総資産（預金＋投資＋退職金見込）：
+・生活防衛資金（普通預金で何ヶ月分あるか）：
 
 【月の収支】
 ・世帯手取り：
-・固定費：
-・変動費：
-・貯蓄投資：
+・固定費合計：
+・変動費合計：
+・貯蓄・投資：
+・赤字 or 黒字（金額）：
 
 【気になっていること】
 
+【3年以内に予定している大きな支出】（マイホーム・車・教育費の山場など）
 
-以下を教えて。
-1. 強みと弱み
-2. 危険信号があれば警告
-3. 改善優先度TOP3</div>
+以下を出力して。
+
+1. 家計の偏差値（同年代・同年収比較）：◯◯
+　・貯蓄率／固定費比率／投資比率の3指標で算出
+　・偏差値の根拠（参照データ：総務省家計調査・金融広報中央委員会）
+
+2. 強み3つ／弱み3つ
+　※「頑張っている」のような感想ではなく、具体的な数値・行動で評価
+
+3. 危険信号（あれば赤字で警告）
+　・生活防衛資金が3ヶ月未満
+　・固定費が手取りの55%超
+　・貯蓄率が10%未満
+　・住居費が手取りの30%超
+　・教育費の準備が間に合わない可能性
+　・老後資金の不足見込み
+
+4. 改善優先度TOP3
+　・項目名／削減・改善見込み額／最初に取る行動／所要時間
+
+5. 1ヶ月後・半年後・1年後の達成目標（数値）
+
+最後に、診断結果を1行で要約：
+「我が家の家計は、◯◯を直せば一気に変わる」</div>
           <button class="copy-btn"><span class="copy-icon"></span>プロンプトをコピー</button>
         </div>
 
-      </div>
-
-      <div class="links-block">
-        <div class="links-eyebrow">— Useful Links —</div>
-        <div class="links-title">📚 お役立ちリンク｜現在地を知る</div>
-        <div class="links-subtitle">公的データで自分の家計の現在地を知る</div>
-        <div class="links-grid">
-          <a href="https://www.stat.go.jp/data/kakei/index.html" target="_blank" rel="noopener" class="link-item">
-            <div class="link-name">総務省 家計調査<span class="link-arrow">↗</span></div>
-            <div class="link-desc"><span class="link-tag">公式</span>同年代・同収入の家計平均が分かる</div>
-          </a>
-          <a href="https://www.e-stat.go.jp/" target="_blank" rel="noopener" class="link-item">
-            <div class="link-name">e-Stat 政府統計<span class="link-arrow">↗</span></div>
-            <div class="link-desc"><span class="link-tag">公式</span>収入・支出の統計データを地域別に検索</div>
-          </a>
-          <a href="https://www.shiruporuto.jp/public/document/container/yoron/" target="_blank" rel="noopener" class="link-item">
-            <div class="link-name">家計の金融行動世論調査<span class="link-arrow">↗</span></div>
-            <div class="link-desc"><span class="link-tag">公式</span>金融広報中央委員会・年代別貯蓄データ</div>
-          </a>
-        </div>
       </div>
     </div>
 
@@ -613,62 +493,104 @@
       <div class="prompts-grid">
 
         <div class="prompt-card">
-          
           <h3 class="prompt-title">通信費プランを比較する</h3>
-          <div class="prompt-usage"><span class="prompt-usage-label">使い方：</span>家族構成と現在の通信費を入力して最適プランを提案してもらう</div>
-          <div class="prompt-body">我が家に最適なスマホ・通信プランを提案して。
+          <div class="prompt-usage"><span class="prompt-usage-label">使い方：</span>家族構成と現在の通信費を入れて、最適プランと年間節約額を試算</div>
+          <div class="prompt-body">あなたは通信費の専門家。キャリアの営業トークではなく、消費者目線で答えて。
 
 【家族構成】
-
+・人数・年齢：
+・スマホを使う人数：
+・主な利用シーン（動画／SNS／通話／テザリング）：
 
 【現在の契約】
-・キャリア：
-・月額合計：
-・光回線：
+・キャリア・プラン名：
+・月額合計（家族全員分）：
+・1人あたりのデータ使用量（月／GB）：
+・光回線・月額：
+・スマホセット割の有無：
 
-【条件・希望】
+【希望条件】
+・月額の上限：
+・通信品質（高速こだわる／低速でOK）：
+・店舗サポートが必要かどうか：
 
+以下を出力して。
 
-おすすめプラン3つを月額・年間費用・キャッシュバック目安と一緒に教えて。
-家族まとめてMNPするメリットも併記して。</div>
+1. 現状の問題点（払いすぎている金額・原因）
+
+2. おすすめプラン3つ
+　・プラン名／月額／データ容量／通話オプション／年間費用
+　・キャッシュバック・初期費用込みの「実質1年費用」
+　・家族でまとめてMNPした場合の合計節約額
+
+3. プランごとの注意点
+　・速度制限の条件
+　・解約金・縛り
+　・最低利用期間
+
+4. 移行手順（MNP予約番号取得→申込→開通までの流れと所要時間）
+
+5. 「今のキャリアを変えない方がいい」例外条件
+　（家族割で5,000円以上下がる／ポイント還元が大きい等）
+
+最後に「我が家の場合、年間◯◯円の節約が最も現実的」と1行で結論。</div>
           <button class="copy-btn"><span class="copy-icon"></span>プロンプトをコピー</button>
         </div>
 
         <div class="prompt-card">
-          
           <h3 class="prompt-title">サブスク棚卸しシート</h3>
-          <div class="prompt-usage"><span class="prompt-usage-label">使い方：</span>クレカ明細をCSV／スクショ／コピペで貼り付け（定期課金チェック用）</div>
-          <div class="prompt-body">私が契約中のサブスクを以下に書きました。
-利用頻度や満足度を考慮して、続けるべき／解約すべき／代替案ありを判定して。
+          <div class="prompt-usage"><span class="prompt-usage-label">使い方：</span>クレカ・銀行明細をCSV／スクショで貼り付け（隠れサブスク発掘）</div>
+          <div class="prompt-body">あなたは固定費削減のプロ。
+私の明細から「隠れサブスク」も含めて全て洗い出し、続ける／解約する／代替に切替の判定をして。
 
-【契約中のサブスク】
-1. サービス名： ／月額： ／利用頻度：
-2. サービス名： ／月額： ／利用頻度：
+【入力】
+・クレカ・キャリア決済・銀行口座引落しの明細（CSV／スクショ／箇条書き）：
 
 【私の状況】
+・月の趣味・娯楽予算：
+・解約しても困らない条件：（例：3ヶ月使ってない／代替がある／値上げされた）
 
+以下を出力して。
 
-判定結果を表形式で、解約した場合の月の節約額も合計で教えて。
-最後に「今すぐ解約すべき1つ」のおすすめを教えて。</div>
+1. 検出したサブスク一覧
+　・サービス名／月額／年間／契約日（推定）／カテゴリ（動画・音楽・クラウド・健康・学習・その他）
+
+2. 隠れサブスク警告（特に注意）
+　・初回無料の自動課金
+　・年契約で割高になっているもの
+　・家族で重複契約しているもの
+　・3ヶ月以上利用形跡がないもの
+　・値上げされたが気づかれていないもの
+
+3. 判定（4分類）
+　【今すぐ解約】サービス名／解約方法（URL or 手順）／解約月の節約額
+　【代替に切替】サービス名／代替案（無料・低価格）／切替手順
+　【継続でOK】サービス名／継続の理由
+　【プラン変更】サービス名／現プラン→提案プラン／差額
+
+4. 月／年の節約合計
+
+5. 「今すぐ解約すべきTOP1」（最も後回しにされがちなもの）
+
+最後に、解約後にやるべきこと（解約手続き完了メールの保存・カード明細での確認・1ヶ月後の利用感ヒアリング）を3ステップで提示。</div>
           <button class="copy-btn"><span class="copy-icon"></span>プロンプトをコピー</button>
         </div>
 
         <div class="prompt-card">
-          
           <h3 class="prompt-title">保険を見直す（FP診断）</h3>
-          <div class="prompt-usage"><span class="prompt-usage-label">使い方：</span>家計全体（貯蓄・収入・住居）を含めてFP視点で診断してもらう</div>
-          <div class="prompt-body">あなたは中立的な立場のプロFP。
-保険会社の営業トークではなく、家計全体を見て、本当に必要な保障だけに絞り込んでください。
+          <div class="prompt-usage"><span class="prompt-usage-label">使い方：</span>家計全体（貯蓄・収入・住居）を含めてFP視点で診断</div>
+          <div class="prompt-body">あなたは保険商品を販売しない独立系FP。
+保険会社の営業トークは無視し、日本の社会保障制度を前提に、本当に必要な保障だけに絞り込んで診断して。
 
-【契約中の保険】（生命・医療・がん・火災・学資・個人年金など全て）
-1. 保険名／月額／加入年齢／主な保障内容：
+【契約中の保険】（生命・医療・がん・火災・学資・個人年金・就業不能など全て）
+1. 保険名／月額／加入年齢／主な保障内容／更新型 or 終身：
 2.
 3.
 
 【家族構成】
-・夫（年齢／職業／年収）：
-・私（年齢／職業／年収）：
-・子（年齢）：
+・夫（年齢／職業／年収／健康状態）：
+・私（年齢／職業／年収／健康状態）：
+・子（年齢・人数）：
 
 【貯蓄・資産】
 ・生活防衛資金（普通預金）：
@@ -680,81 +602,62 @@
 【住居】
 ・持ち家／賃貸：
 ・住宅ローン残高：
-・団信加入：あり／なし
+・団信加入：あり／なし／3大疾病特約あり
 ・住居費：月
 
 【公的保障の確認】
-・健康保険：会社員（健保組合）／国保／公務員
+・健康保険：会社員（健保組合）／国保／公務員共済
 ・健保組合の付加給付：あり（自己負担上限◯円）／なし／不明
-・遺族年金の見込額：
-・傷病手当金：あり／なし
+・遺族年金の見込額（ねんきんネットで確認）：
+・傷病手当金：あり（金額／期間）／なし
 
 【リスク許容度・希望】
 ・最も不安なリスク：
 ・絶対に守りたいこと：
 ・現在の月の保険料合計：
 
-以下を診断してください。
+以下を診断して。
 
-1. **生活防衛資金の充足度判定**
-　・月の生活費の何ヶ月分あるか
+1. 生活防衛資金の充足度判定
+　・月の生活費の何ヶ月分あるか（目安：会社員6ヶ月／自営業1年）
 　・公的保障＋貯蓄でカバーできる医療費・収入損失リスク
 
-2. **必要保障額の試算**
-　・夫の死亡保障（必要額：◯◯万円／現状：◯◯万円／過不足）
-　・私の死亡保障（同上）
-　・医療保障（高額療養費＋付加給付＋貯蓄でカバーできる範囲）
-　・就業不能保障（傷病手当金＋貯蓄でカバーできる期間）
+2. 必要保障額の試算
+　・夫の死亡保障（必要額／現状／過不足）：遺族年金＋貯蓄差し引き計算
+　・私の死亡保障（同上）：家事代行コストも含めて計算
+　・医療保障：高額療養費＋付加給付＋貯蓄でカバーできる範囲
+　・就業不能保障：傷病手当金（給与の2/3が最長1年6ヶ月）＋貯蓄でカバーできる期間
 
-3. **各保険の必要度判定（理由つき）**
+3. 各保険の必要度判定（理由つき）
 　・必要：保険名と理由
 　・不要：保険名と理由（公的＋貯蓄で代替可能な根拠）
 　・要検討：保険名と検討すべきポイント
 
-4. **解約・見直しの優先順位**
+4. 解約・見直しの優先順位
 　・即解約していい保険TOP3（節約額付き）
 　・減額検討の保険
 　・解約タイミング・解約返戻金の確認方法
+　・更新型は更新前のタイミング
 
-5. **代替手段の提案**
-　・NISAで運用する場合のシミュレーション
-　・公的制度（高額療養費・付加給付）の活用
+5. 代替手段の提案
+　・NISAで運用する場合の30年シミュレーション
+　・公的制度（高額療養費・付加給付・障害年金）の活用
 　・貯蓄を厚くする方が合理的なケース
 
-6. **見直し後の理想形**
-　・月の保険料適正額
+6. 見直し後の理想形
+　・月の保険料適正額（手取りの3〜5%が目安）
 　・年間の節約額
 　・浮いたお金の最適な使い道（貯蓄・運用配分）
 
-保険業界の常識（「医療保険は必須」等）に流されず、
-日本の社会保障制度を前提に、消費者目線で正直に診断してください。</div>
+7. 注意点
+　・解約してから新規加入は「健康告知」のリスク
+　・終身払いと60歳払い済みの違い
+　・解約返戻金の課税関係
+
+保険業界の常識（「医療保険は必須」等）に流されず、消費者目線で正直に診断して。</div>
           <button class="copy-btn"><span class="copy-icon"></span>プロンプトをコピー</button>
         </div>
 
-      </div>
-
-      <div class="links-block">
-        <div class="links-eyebrow">— Useful Links —</div>
-        <div class="links-title">📚 お役立ちリンク｜固定費を削る</div>
-        <div class="links-subtitle">公式の制度・料金情報</div>
-        <div class="links-grid">
-          <a href="https://www.soumu.go.jp/menu_seisaku/ictseisaku/keitai_denwa/" target="_blank" rel="noopener" class="link-item">
-            <div class="link-name">総務省 携帯電話料金<span class="link-arrow">↗</span></div>
-            <div class="link-desc"><span class="link-tag">公式</span>料金プラン・乗り換えに関する公式情報</div>
-          </a>
-          <a href="https://www.enecho.meti.go.jp/category/electricity_and_gas/electric/electricity_liberalization/" target="_blank" rel="noopener" class="link-item">
-            <div class="link-name">電力小売自由化（資源エネルギー庁）<span class="link-arrow">↗</span></div>
-            <div class="link-desc"><span class="link-tag">公式</span>新電力の選び方・公式情報</div>
-          </a>
-          <a href="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/iryouhoken/iryouhoken01/index.html" target="_blank" rel="noopener" class="link-item">
-            <div class="link-name">公的医療保険制度（厚労省）<span class="link-arrow">↗</span></div>
-            <div class="link-desc"><span class="link-tag">公式</span>民間保険を判断する前にまず確認</div>
-          </a>
-          <a href="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/iryouhoken/juuyou/kougakuiryou/index.html" target="_blank" rel="noopener" class="link-item">
-            <div class="link-name">高額療養費制度（厚労省）<span class="link-arrow">↗</span></div>
-            <div class="link-desc"><span class="link-tag">公式</span>医療費の自己負担上限額を確認</div>
-          </a>
-        </div>
       </div>
     </div>
 
@@ -768,86 +671,149 @@
       <div class="prompts-grid">
 
         <div class="prompt-card">
-          
-          <h3 class="prompt-title">1週間の献立を作る</h3>
-          <div class="prompt-usage"><span class="prompt-usage-label">使い方：</span>家族構成と冷蔵庫の食材を伝えて、週末まとめ買いの前に</div>
-          <div class="prompt-body">1週間献立を作って。
+          <h3 class="prompt-title">1週間の献立＆まとめ買いリスト</h3>
+          <div class="prompt-usage"><span class="prompt-usage-label">使い方：</span>家族構成・予算・冷蔵庫の在庫を入れて週末まとめ買いの前に</div>
+          <div class="prompt-body">あなたは家計に強い管理栄養士。
+我が家の1週間（月〜日）の献立を、栄養・予算・調理時間のバランスで作って。
 
 【家族構成】
+・大人（人数／好き嫌い）：
+・子（年齢／好き嫌い）：
 
+【予算・条件】
+・1週間の食費上限：
+・1食の調理時間：何分以内
+・苦手な食材／アレルギー：
+・繰り返し食べたいおかず：
 
-【苦手な食材／好きな食材】
-
-
-【条件・予算】
-
-
-【冷蔵庫の在庫】
-
+【冷蔵庫・冷凍庫の在庫】
+（残り使い切りたい食材を箇条書き）
 
 以下を出力して。
-1. 月〜日の主菜と副菜（簡単な作り方も）
-2. まとめて買う食材リスト
+
+1. 月〜日の献立（朝昼夕／作り置き活用）
+　・主菜＋副菜2品＋汁物
+　・所要時間の目安
+　・在庫食材を使う日を明示
+
+2. まとめ買いリスト（カテゴリ別）
+　・肉・魚・卵／野菜・果物／乾物・調味料／米・パン・麺／その他
+　・推定価格
+
 3. 想定費用合計
-4. 「週末リセット日」のメニュー案2パターン</div>
+　・1週間 ◯◯円／1人◯◯円／1食◯◯円
+
+4. 買うべきタイミング・店
+　・スーパー：日曜のまとめ買い
+　・業務スーパー／ドラッグストアでまとめ買いがお得な品
+
+5. 「リセット日」のメニュー2案
+　・冷蔵庫が空いてくる週末用の使い切りメニュー
+
+6. 食品ロスを減らす保存方法TOP3
+
+最後に、来週の食費をさらに削るためのコツを1行で。</div>
           <button class="copy-btn"><span class="copy-icon"></span>プロンプトをコピー</button>
         </div>
 
         <div class="prompt-card">
-          
-          <h3 class="prompt-title">月末家計振り返り</h3>
-          <div class="prompt-usage"><span class="prompt-usage-label">使い方：</span>月末に当月の支出データを貼り付けて、振り返りと来月の改善案</div>
-          <div class="prompt-body">今月の家計データを以下にまとめました。
-振り返りと来月の改善案を教えて。
+          <h3 class="prompt-title">月末家計振り返り＆来月プラン</h3>
+          <div class="prompt-usage"><span class="prompt-usage-label">使い方：</span>月末に当月の支出データを貼り付け、振り返りと改善案を出してもらう</div>
+          <div class="prompt-body">あなたは家計伴走FP。
+今月の家計を客観的に振り返って、来月の具体プランまで作って。
+※「頑張りましたね」「素晴らしいです」は不要。事実ベースで本音評価。
 
 【今月の支出（カテゴリ別）】
-・固定費：
+・住居費：
+・通信費：
+・水道光熱費：
+・保険料：
 ・食費：
 ・日用品：
 ・教育費：
+・交通費：
 ・趣味・交際費：
+・特別費（冠婚葬祭・家電など）：
 ・その他：
 合計：
 
-【今月のハイライト】
-
-
-【世帯月収】
+【世帯月収】（手取り）：
 
 【貯蓄・投資】
+・先月末残高：
+・今月末残高：
+・差額（貯蓄できた金額）：
+
+【今月のハイライト】（特別な出来事・想定外の出費）：
 
 【私が達成したい目標】
-
+・1年後：
+・3年後：
 
 以下を出力して。
-1. 全体の感想（収支バランス・先月比など）
-2. 良かった点3つ
+
+1. 全体評価（数値ベース）
+　・貯蓄率／前月比／予算達成度
+　・同年代家計平均と比較
+
+2. 良かった点3つ（具体的な金額・行動を伴うものだけ）
+
 3. 改善できそうな点3つ
-4. 来月のアクション3つ
-5. 目標達成度（％）</div>
+　・項目名／予算オーバー額／原因／来月の対策
+
+4. 来月のアクション3つ（実行可能な粒度まで分解）
+　・月初にやる：
+　・週次でやる：
+　・月末にやる：
+
+5. 目標達成度（％）と、達成のために残る課題
+
+最後に、来月までに動かす1つに絞った「最重要アクション」を提示。</div>
           <button class="copy-btn"><span class="copy-icon"></span>プロンプトをコピー</button>
         </div>
 
-      </div>
+        <div class="prompt-card">
+          <h3 class="prompt-title">物価高対策の食費圧縮プラン</h3>
+          <div class="prompt-usage"><span class="prompt-usage-label">使い方：</span>食費・日用品が値上がりで痛い時に、削れる項目を分析</div>
+          <div class="prompt-body">あなたは物価高に強い家計再構築FP。
+我が家の食費・日用品が値上がりで圧迫されているので、栄養と満足度は落とさず削れる項目を分析して。
 
-      <div class="links-block">
-        <div class="links-eyebrow">— Useful Links —</div>
-        <div class="links-title">📚 お役立ちリンク｜食費・日用品</div>
-        <div class="links-subtitle">食事・栄養・食品ロスの公式情報</div>
-        <div class="links-grid">
-          <a href="https://www.maff.go.jp/j/syokuiku/zissen_navi/balance/" target="_blank" rel="noopener" class="link-item">
-            <div class="link-name">食事バランスガイド（農水省）<span class="link-arrow">↗</span></div>
-            <div class="link-desc"><span class="link-tag">公式</span>1日の食事バランスを公的指標で確認</div>
-          </a>
-          <a href="https://www.no-foodloss.caa.go.jp/" target="_blank" rel="noopener" class="link-item">
-            <div class="link-name">食品ロス削減（消費者庁）<span class="link-arrow">↗</span></div>
-            <div class="link-desc"><span class="link-tag">公式</span>家庭で食材ロスを減らすコツ</div>
-          </a>
-          <a href="https://www.stat.go.jp/data/kakei/" target="_blank" rel="noopener" class="link-item">
-            <div class="link-name">食費の家計統計（総務省）<span class="link-arrow">↗</span></div>
-            <div class="link-desc"><span class="link-tag">公式</span>世帯別の食費平均を確認</div>
-          </a>
+【現状の月の支出】
+・食費：（外食含む）
+・日用品：
+・家族構成：
+・1食あたり予算（朝／昼／夕）：
+
+【最近値上がりして痛い品目】
+
+【絶対に減らしたくない満足ポイント】（休日のごちそう・好きなお菓子など）
+
+以下を出力して。
+
+1. 削減ポテンシャル分析
+　・固定的に買っている品目の単価×頻度
+　・代替できる品目（PB商品・冷凍野菜・乾物など）
+　・買う場所を変えるだけで安くなる品
+
+2. 値上げ前後の家計比較
+　・代表品目（米・卵・牛乳・パン・洗剤）の値上がり率
+　・我が家の月のインパクト
+
+3. 物価高に効く5つの仕組み
+　・週1まとめ買い／曜日固定の買い物
+　・冷凍ストックでの食品ロス削減
+　・PB商品・業務スーパー・ドラッグストアの使い分け
+　・楽天ポイント／PayPay／クレカポイントの最適還元
+　・ふるさと納税で米・肉・日用品を確保
+
+4. 1ヶ月の節約見込み（最低／中／最大）
+
+5. やめるべき節約TOP3（時間対効果が悪い）
+
+最後に、来週から始める「物価高対策ベスト1」を1行で。</div>
+          <button class="copy-btn"><span class="copy-icon"></span>プロンプトをコピー</button>
         </div>
+
       </div>
     </div>
 
@@ -861,89 +827,116 @@
       <div class="prompts-grid">
 
         <div class="prompt-card">
-          
-          <h3 class="prompt-title">教育費シミュレーション</h3>
-          <div class="prompt-usage"><span class="prompt-usage-label">使い方：</span>子どもの年齢と進学希望を伝えて、必要金額と貯蓄ペースを試算</div>
-          <div class="prompt-body">あなたは教育費プランナー。
-我が家の教育費を試算して。
+          <h3 class="prompt-title">教育費シミュレーション（大学卒業まで）</h3>
+          <div class="prompt-usage"><span class="prompt-usage-label">使い方：</span>子どもの年齢と進学希望を入れて、必要金額と貯蓄ペースを試算</div>
+          <div class="prompt-body">あなたは教育資金プランナー。
+我が家の教育費を、文科省「子供の学習費調査」と日本政策金融公庫「教育費負担の実態調査」の最新データを前提に試算して。
 
 【子どもの情報】
+・第1子：年齢／性別
+・第2子：
+・第3子：
 
-
-【希望進路パターン】
+【希望進路パターン】（公立／私立のいずれかで）
 ・幼稚園：
 ・小学校：
 ・中学校：
 ・高校：
-・大学：
+・大学：（国公立・私立文系・私立理系・医歯薬・自宅外通学の有無）
 
 【現在の貯蓄】
-・教育資金：
-・NISA：
+・教育資金専用口座：
+・学資保険：（月額／満期金額／返戻率）
+・NISA・ジュニア枠：
+・児童手当の貯蓄状況：
+
+【世帯収入】
+・夫の手取り：
+・私の手取り：
+・住宅ローン残高：
 
 【気になっていること】
 
-
 以下を出力して。
-1. 子どもごとの大学卒業までの総教育費
+
+1. 子どもごとの大学卒業までの総教育費（中央値・最大ケース）
+　・幼稚園〜大学までの内訳（学校教育費・学校給食費・学校外活動費）
+　・自宅外通学の場合の追加費用（仕送り・住居）
+
 2. 必要な月々の貯蓄ペース
-3. 児童手当をフル活用した場合の不足額
-4. NISA・学資保険の使い分け案
-5. 「これだけは始めておきたい」優先アクション3つ</div>
+　・「現状の貯蓄ペースで足りるか」判定
+　・不足額（総額・月額）
+
+3. 児童手当をフル活用した場合
+　・0歳〜18歳までの総額（第1子・第3子で違いあり）
+　・全額貯蓄／NISA運用（年利3%・5%）の3パターン比較
+
+4. 学資保険 vs NISA 比較
+　・返戻率／流動性／元本保証／節税の4軸で比較
+　・我が家の場合の最適ミックス
+
+5. 使える公的制度
+　・高校無償化（私立も含む2026年最新の所得制限）
+　・大学無償化（修学支援新制度）の対象になるか
+　・JASSO奨学金（給付型・第一種・第二種）の活用条件
+
+6. 「これだけは始めておきたい」優先アクション3つ
+　・期限／金額／開始手順
+
+最後に、不足額が大きい場合の現実的な選択肢（進路変更・働き方変更・受験戦略）を提示。</div>
           <button class="copy-btn"><span class="copy-icon"></span>プロンプトをコピー</button>
         </div>
 
         <div class="prompt-card">
-          
-          <h3 class="prompt-title">児童手当の使い方</h3>
-          <div class="prompt-usage"><span class="prompt-usage-label">使い方：</span>児童手当を全額貯蓄にすべきか、運用すべきか相談</div>
-          <div class="prompt-body">児童手当の最適な使い方を教えて。
+          <h3 class="prompt-title">児童手当の最適な使い方</h3>
+          <div class="prompt-usage"><span class="prompt-usage-label">使い方：</span>児童手当を全額貯蓄か、運用するか相談</div>
+          <div class="prompt-body">あなたは資産運用に詳しいFP。
+児童手当の最適な使い方を、税制と運用シミュレーションを踏まえて教えて。
+※2024年10月の制度改正で所得制限撤廃・高校卒業までに延長された前提で。
 
 【家庭情報】
-・子の年齢：
+・子の年齢・人数：
 ・現在の総貯蓄：
-・教育資金専用口座：
-・NISAの有無：
+・教育資金専用口座：あり／なし
+・NISAの利用状況：（つみたて投資枠／成長投資枠の使用残）
+・iDeCoの利用状況：
+・夫婦の年収（合算）：
 
 【現在の児童手当の使い道】
 
-
 【知りたいこと】
-
+・全額貯蓄 vs 全額NISA vs 一部生活費充当 のどれが最適か
 
 以下を教えて。
-1. 子が18歳になるまでの児童手当総額
+
+1. 子が18歳になるまでの児童手当総額（第◯子の場合）
+　・3歳まで月15,000円／3歳〜高校卒業まで月10,000円（第3子以降は月30,000円）
+
 2. 全額貯蓄した場合の到達金額
+　・元本のみ／普通預金金利（0.001%）／定期預金（0.3%）の3パターン
+
 3. 全額NISA運用した場合の予想金額
-4. 預金とNISAのおすすめ配分
-5. 「児童手当だけで大学費用を作る」プラン</div>
+　・年利3%・5%・7%の3パターン
+　・暴落シナリオ（途中で-30%）込みの最終額レンジ
+　・ドルコスト平均法でのリスク
+
+4. おすすめ配分（4パターン例）
+　・全額貯蓄：流動性最重視
+　・貯蓄50%＋NISA50%：バランス型
+　・全額NISA：時間を味方にする型
+　・教育資金確定分は預金、余剰はNISA：用途別
+
+5. 「児童手当だけで大学費用を作る」プラン
+　・国公立 vs 私立文系 vs 私立理系で必要額が異なる
+　・足りない部分の補い方
+
+6. 注意点
+　・児童手当は満18歳「年度末」まで（誕生日基準ではない）
+　・NISA運用は途中で必要になった時に元本割れの可能性
+　・所得制限撤廃でも申請は必要</div>
           <button class="copy-btn"><span class="copy-icon"></span>プロンプトをコピー</button>
         </div>
 
-      </div>
-
-      <div class="links-block">
-        <div class="links-eyebrow">— Useful Links —</div>
-        <div class="links-title">📚 お役立ちリンク｜教育費</div>
-        <div class="links-subtitle">教育費・奨学金の公式データ</div>
-        <div class="links-grid">
-          <a href="https://www.mext.go.jp/b_menu/toukei/chousa03/gakushuuhi/index.htm" target="_blank" rel="noopener" class="link-item">
-            <div class="link-name">子供の学習費調査（文科省）<span class="link-arrow">↗</span></div>
-            <div class="link-desc"><span class="link-tag">公式</span>幼稚園〜高校までの教育費平均</div>
-          </a>
-          <a href="https://www.jfc.go.jp/n/findings/kyoiku.html" target="_blank" rel="noopener" class="link-item">
-            <div class="link-name">教育費負担の実態調査（日本政策金融公庫）<span class="link-arrow">↗</span></div>
-            <div class="link-desc"><span class="link-tag">公式</span>大学までの教育費試算データ</div>
-          </a>
-          <a href="https://www.jasso.go.jp/shogakukin/" target="_blank" rel="noopener" class="link-item">
-            <div class="link-name">JASSO 奨学金<span class="link-arrow">↗</span></div>
-            <div class="link-desc"><span class="link-tag">公式</span>日本学生支援機構の奨学金情報</div>
-          </a>
-          <a href="https://www.cfa.go.jp/policies/jidouteate/" target="_blank" rel="noopener" class="link-item">
-            <div class="link-name">児童手当（こども家庭庁）<span class="link-arrow">↗</span></div>
-            <div class="link-desc"><span class="link-tag">公式</span>受給額・申請方法の最新情報</div>
-          </a>
-        </div>
       </div>
     </div>
 
@@ -957,107 +950,221 @@
       <div class="prompts-grid">
 
         <div class="prompt-card">
-          
           <h3 class="prompt-title">NISA・iDeCo どっちから始める</h3>
           <div class="prompt-usage"><span class="prompt-usage-label">使い方：</span>始めるか迷っている人向け・優先順位を判断</div>
-          <div class="prompt-body">私の状況に最適なNISA・iDeCoの活用プランを教えて。
+          <div class="prompt-body">あなたは中立的な独立系FP。
+私の状況に最適なNISA・iDeCoの活用プランを、節税効果と流動性の両面で教えて。
 
 【私の情報】
 ・年齢：
-・年収：
-・働き方：
+・年収（額面）：
+・働き方：会社員／自営業／専業主婦・主夫／パート
 ・配偶者の年収：
-・子の年齢：
+・子の年齢・人数：
+・住宅ローン控除：あり（残り◯年）／なし
+・所得税率（住宅ローン控除後の実効税率）：
 
 【現在の運用】
-・NISA：（している／してない）
-・iDeCo：（している／してない）
+・NISA：している（つみたて／成長／満額活用）／していない
+・iDeCo：している（月◯円）／していない
+・企業型DC：あり（マッチング拠出◯円）／なし
 
 【ゴール】
-
+・最優先：教育費／老後資金／資産形成全般／節税
+・運用に回せる月額：
 
 以下を教えて。
-1. NISAとiDeCo、優先度はどっち？理由は？
+
+1. NISAとiDeCo、どっちが優先？理由は？
+　・年齢／年収／用途で変わる判断軸を表で整理
+　・専業主婦・主夫の場合の落とし穴（節税効果が薄い）
+
 2. 月いくら積み立てるのが現実的？
+　・手取り×投資余力（一般的には5〜15%）
+　・ボーナス併用 vs 月固定の比較
+
 3. iDeCoの節税効果（年いくら戻る？）
+　・所得税＋住民税の軽減額の試算
+　・年末調整／確定申告の手順
+
 4. 始めるベストなタイミング
-5. 「やめておいたほうがいい」NG行動3つ</div>
+　・「相場が下がってから」が間違いな理由
+　・新NISAの非課税期間と時間分散の優位性
+
+5. 「やめておいたほうがいい」NG行動5つ
+　・暴落時に積立停止
+　・短期で乗り換え
+　・テーマ型・レバレッジ型に集中
+　・iDeCoを生活防衛資金より先に始める
+　・SNSで話題の銘柄を真似る
+
+6. うちの場合の最適配分
+　・つみたて投資枠／成長投資枠／iDeCo の月額配分
+
+最後に「我が家がまずやる1つ」を1行で。</div>
           <button class="copy-btn"><span class="copy-icon"></span>プロンプトをコピー</button>
         </div>
 
         <div class="prompt-card">
-          
-          <h3 class="prompt-title">NISA推奨銘柄を聞く</h3>
-          <div class="prompt-usage"><span class="prompt-usage-label">使い方：</span>NISA初心者向けの定番銘柄を教えてもらう</div>
-          <div class="prompt-body">新NISAで積立する銘柄を選びたい。
+          <h3 class="prompt-title">NISAの銘柄選びの軸を教わる</h3>
+          <div class="prompt-usage"><span class="prompt-usage-label">使い方：</span>個別銘柄の推奨ではなく「自分で選べるようになる」軸を学ぶ</div>
+          <div class="prompt-body">あなたは独立系FP。
+特定の銘柄を勧めるのではなく、「自分で銘柄を選べるようになる軸」を教えて。
+※AIによる個別銘柄推奨は最終的に自分で検証する前提で読む。
 
 【私の情報】
-・年齢：
-・投資経験：
-・リスク許容度：低／中／高
+・年齢／投資経験：
+・リスク許容度：低（元本割れ怖い）／中／高
 ・運用期間：
 ・月の積立予定額：
+・運用の目的：教育資金／老後／余剰資産
 
 【希望】
 
-
 以下を教えて。
-1. つみたて投資枠で買うべき銘柄3つ
-2. 成長投資枠で買うべき銘柄3つ
-3. それぞれの特徴と過去リターン
-4. 配分の目安（％）
-5. 「絶対に買わないほうがいい」NG銘柄</div>
+
+1. つみたて投資枠の選び方の軸
+　・信託報酬の上限目安（0.2%以下が無難）
+　・純資産総額（500億円以上が望ましい理由）
+　・ベンチマーク（S&P500／全世界株／TOPIX 等の違い）
+　・分配金あり vs なしの長期影響
+
+2. 成長投資枠の選び方
+　・つみたて枠と何を変えるか／変えないか
+　・個別株 vs ETF vs アクティブファンドの比較
+　・REIT・コモディティを組み入れるかの判断
+
+3. 過去20年の主要インデックスのリターン
+　・S&P500／オルカン／TOPIX／先進国／新興国
+　・ドル円の影響（為替ヘッジあり・なし）
+
+4. 配分の目安（年代別）
+　・30代／40代／50代の例
+　・リスク許容度別の例
+
+5. 「絶対に避けたほうがいい」NG銘柄パターン
+　・信託報酬が1%超えのアクティブ型
+　・テーマ型（AI、メタバース等の流行）
+　・レバナス・ブル型・ベア型
+　・毎月分配型
+　・販売手数料が高いラップ口座
+
+6. 銘柄を最終決定する前のチェック5項目
+　・目論見書の確認ポイント
+　・運用報告書の見方
+　・SBI／楽天／マネックスでの比較
+
+最後に、自分の状況に当てはめた「シンプルな1〜3本構成」の例を提示。</div>
           <button class="copy-btn"><span class="copy-icon"></span>プロンプトをコピー</button>
         </div>
 
         <div class="prompt-card">
-          
           <h3 class="prompt-title">投資の暴落シナリオ対策</h3>
           <div class="prompt-usage"><span class="prompt-usage-label">使い方：</span>もし市場が暴落したらどうするか、心構えを整理</div>
-          <div class="prompt-body">市場が暴落した場合の対応を整理しておきたい。
+          <div class="prompt-body">あなたは長期投資の伴走FP。
+私が市場暴落時にパニック売りしないための、行動ルールとメンタル整理術を教えて。
 
 【私の運用】
-・NISA積立：月
-・iDeCo：月
+・NISA積立：月◯円（銘柄）
+・iDeCo：月◯円
 ・現在の評価額：
+・投資元本：
 
 【私の状況】
 ・運用残り期間：
 ・年齢：
+・生活防衛資金（普通預金）：
+・直近で必要な大型支出：あり／なし
 
 以下を教えて。
-1. 過去の暴落事例と回復までの期間
+
+1. 過去の主要な暴落事例と回復までの期間
+　・ITバブル（2000）／リーマン（2008）／コロナショック（2020）
+　・最大下落率／回復までの月数／積立を続けた人の最終リターン
+
 2. 暴落時にやってはいけない3つ
+　・売却して現金化
+　・積立停止
+　・SNS情報で銘柄を入れ替え
+
 3. 暴落時にやるべき3つ
-4. 「これだけは決めておく」ルール5つ
-5. メンタル維持のコツ</div>
+　・積立は止めない
+　・余剰資金があれば追加買付（金額・タイミングのルール）
+　・評価額を見る頻度を下げる
+
+4. 「これだけは決めておく」事前ルール5つ
+　・評価額のチェック頻度（月1回など）
+　・許容できる最大下落率（-30%／-50%）
+　・暴落時の追加投資の上限ルール
+　・売却を検討する条件（家計状況の悪化など）
+　・配偶者と話し合う合言葉
+
+5. メンタル維持のコツ
+　・SNSで証券口座を見ない
+　・過去の暴落チャートを印刷して財布に入れる
+　・「いつ必要なお金か」を再確認
+
+6. 暴落をチャンスに変える具体行動
+　・iDeCo・NISAのリバランス
+　・特定口座→NISA枠への乗せ替え検討
+
+最後に、暴落時に夫・妻と読み返すための「我が家の投資憲章」3行を提案。</div>
           <button class="copy-btn"><span class="copy-icon"></span>プロンプトをコピー</button>
         </div>
 
-      </div>
+        <div class="prompt-card">
+          <h3 class="prompt-title">ボーナスの最適配分プラン</h3>
+          <div class="prompt-usage"><span class="prompt-usage-label">使い方：</span>夏・冬のボーナスを「使う・貯める・増やす」で割り振る</div>
+          <div class="prompt-body">あなたは家計バランス型FP。
+ボーナスを「散財」「全額貯蓄」「全額投資」のどれでもなく、
+我が家のライフプランに合わせて最適配分して。
 
-      <div class="links-block">
-        <div class="links-eyebrow">— Useful Links —</div>
-        <div class="links-title">📚 お役立ちリンク｜投資・NISA・iDeCo</div>
-        <div class="links-subtitle">国の公式情報・シミュレーション</div>
-        <div class="links-grid">
-          <a href="https://www.fsa.go.jp/policy/nisa2/index.html" target="_blank" rel="noopener" class="link-item">
-            <div class="link-name">NISA特設サイト（金融庁）<span class="link-arrow">↗</span></div>
-            <div class="link-desc"><span class="link-tag">公式</span>新NISA制度の正しい情報</div>
-          </a>
-          <a href="https://www.ideco-koushiki.jp/" target="_blank" rel="noopener" class="link-item">
-            <div class="link-name">iDeCo公式サイト<span class="link-arrow">↗</span></div>
-            <div class="link-desc"><span class="link-tag">公式</span>節税シミュレーションあり</div>
-          </a>
-          <a href="https://www.fsa.go.jp/policy/nisa2/moneyplan_sim/index.html" target="_blank" rel="noopener" class="link-item">
-            <div class="link-name">資産運用シミュレーション（金融庁）<span class="link-arrow">↗</span></div>
-            <div class="link-desc"><span class="link-tag">公式</span>運用試算ツール（広告なし）</div>
-          </a>
-          <a href="https://www.shiruporuto.jp/" target="_blank" rel="noopener" class="link-item">
-            <div class="link-name">知るぽると（金融広報中央委員会）<span class="link-arrow">↗</span></div>
-            <div class="link-desc"><span class="link-tag">公式</span>投資の基礎を中立に学べる</div>
-          </a>
+【ボーナス情報】
+・支給額（手取り）：
+・支給時期：夏／冬
+・年間ボーナス合計：
+
+【家計状況】
+・住宅ローン残高：
+・教育費の準備状況：
+・生活防衛資金（普通預金で何ヶ月分）：
+・NISA・iDeCoの利用状況：
+・カードリボ・分割払い・カーローンなど借入：あり／なし
+
+【今年の特別支出】（結婚式・帰省・家電買替・旅行・冠婚葬祭 等）
+
+【家族の「楽しみ」予算】（自分・夫・子どもへの還元）
+
+以下を出力して。
+
+1. 推奨配分（5項目）
+　①借金返済（リボ・カードローン）：金利の高いものから優先
+　②生活防衛資金：6ヶ月分まで補充
+　③NISA・iDeCo：年間枠の埋まり具合で調整
+　④家族還元（自分・夫・子・体験）：◯%以内
+　⑤住宅ローン繰上返済 or 教育資金：残額を振り分け
+
+2. 「全額NISA」がNGな理由（あれば）
+　・生活防衛資金が薄い場合
+　・年内に大型支出予定がある場合
+
+3. 「全額預金」がもったいない理由
+　・インフレ負け／非課税枠の機会損失
+
+4. 配偶者の理解を得るための説明テンプレ
+　・「自由に使える分」を先に確保
+　・家族還元を見える化
+
+5. ボーナスを「気づいたら無くなってる」を防ぐ仕組み
+　・支給日に振分先口座へ自動振替
+　・先取り→残りで遊ぶ
+
+6. 半年に1回の振り返りのチェック項目
+
+最後に、今回のボーナスで一番優先すべき1項目を金額付きで提示。</div>
+          <button class="copy-btn"><span class="copy-icon"></span>プロンプトをコピー</button>
         </div>
+
       </div>
     </div>
 
@@ -1071,104 +1178,176 @@
       <div class="prompts-grid">
 
         <div class="prompt-card">
-          
           <h3 class="prompt-title">ふるさと納税の限度額</h3>
           <div class="prompt-usage"><span class="prompt-usage-label">使い方：</span>年収と家族構成から最適な寄付額を計算</div>
-          <div class="prompt-body">ふるさと納税の限度額と最適活用法を教えて。
+          <div class="prompt-body">あなたは税理士。
+ふるさと納税の限度額と最適活用法を、最新の控除ルールで教えて。
+※2025年10月以降ポータルサイトのポイント還元廃止／2026年も継続。
 
 【家族情報】
-・夫の年収：
-・私の年収：
-・子の人数・年齢：
-・住宅ローン控除：
-・iDeCo：月
-・医療費控除：
+・夫の年収（額面）：
+・私の年収（額面）：
+・子の人数・年齢（16歳以上は扶養控除あり）：
+・住宅ローン控除：あり（年間控除額◯円）／なし
+・iDeCo：月◯円
+・小規模企業共済：月◯円
+・医療費控除予定額：
+・社会保険料控除（給与天引き分以外）：
+・生命保険料控除：
+・地震保険料控除：
 
 以下を教えて。
-1. 夫の限度額
-2. 私の限度額
+
+1. 夫の限度額（住民税所得割×20%目安）
+　・基本ライン（控除なし）
+　・各種控除を反映した実質限度額
+
+2. 私の限度額（同上）
+
 3. 世帯としての最大活用方法
+　・夫婦それぞれが寄付した場合のメリット
+　・名義（クレカ・寄付者）に注意
+
 4. ワンストップ特例 vs 確定申告どちらがいいか
-5. おすすめ返礼品の選び方</div>
+　・ワンストップ：5自治体まで／給与所得のみ／申請期限1/10
+　・確定申告：医療費控除や住宅ローン控除1年目と併用するとき必須
+
+5. おすすめ返礼品の選び方
+　・還元率30%超で家計に貢献するカテゴリ
+　・冷凍庫を圧迫しない量の選び方
+　・お米・お肉・日用品など消費期限の長いもの優先
+
+6. 限度額を超えたらどうなるか
+　・自己負担2,000円が増える仕組み
+　・余裕を見て9割で抑える運用ルール
+
+7. 落とし穴
+　・産休・育休でその年の所得が下がるケース
+　・転職・退職で年収が変わるケース
+　・ワンストップ特例の申請忘れリカバリー手順
+
+最後に「我が家の今年の最適寄付額」を1行で。</div>
           <button class="copy-btn"><span class="copy-icon"></span>プロンプトをコピー</button>
         </div>
 
         <div class="prompt-card">
-          
           <h3 class="prompt-title">医療費控除を申請する</h3>
-          <div class="prompt-usage"><span class="prompt-usage-label">使い方：</span>1年の医療費を入れて、控除額を計算</div>
-          <div class="prompt-body">医療費控除の申請をすべきか教えて。
+          <div class="prompt-usage"><span class="prompt-usage-label">使い方：</span>1年の医療費を入れて、控除額と還付金を計算</div>
+          <div class="prompt-body">あなたは確定申告に詳しい税理士。
+医療費控除の申請をすべきか判定し、申告手順まで教えて。
 
-【今年の家族の医療費】
-・私：
+【今年の家族の医療費】（1月〜12月、暦年）
+・私（金額／主な内訳）：
 ・夫：
 ・子：
 ・合計：
 
-【含めるか迷うもの】
+【含めるか迷うもの】（チェック）
+・病院までの交通費：
+・市販薬（風邪薬・湿布等）：
+・歯科自由診療（インプラント・矯正）：
+・入院時の差額ベッド代：
+・出産関連費用：
+・通院に必要なタクシー代（医師の指示書あり）：
+・コンタクトレンズ・眼鏡（医師の指示書あり）：
+・健康診断・人間ドック（病気が見つかった場合のみ）：
 
+【保険からの給付金（差し引く必要）】
+・高額療養費：
+・出産育児一時金：
+・医療保険の給付金：
+・傷病手当金（医療費とは別なので原則差し引かない）：
 
 【世帯所得】
-・夫年収：
-・私年収：
+・夫年収（額面）：
+・私年収（額面）：
+・所得税率：
 
 以下を教えて。
+
 1. 控除対象になる金額
+　・医療費合計 − 保険給付 − 10万円（または所得の5%）
+
 2. 還付金の目安
+　・所得税の還付額／翌年の住民税減額／合計
+
 3. セルフメディケーション税制との比較
+　・OTC医薬品中心ならこちらが得な場合も
+　・両方は併用不可
+
 4. 必要な書類リスト
-5. 確定申告の手順</div>
+　・医療費控除の明細書（領収書は5年保存）
+　・源泉徴収票
+　・マイナンバーカード or 通知カード
+　・保険給付の通知書
+
+5. 確定申告の手順
+　・国税庁「確定申告書作成コーナー」の使い方
+　・e-Tax で自宅から申告（スマホで完結する流れ）
+　・郵送・窓口の場合の提出期限
+
+6. 5年分さかのぼって申告できる
+　・過去年分の還付申告の可否
+　・電子申告／書面申告での違い
+
+7. 注意点
+　・夫婦のどちらが申告すると得か（所得が高い方）
+　・医療費通知（マイナポータル）の活用</div>
           <button class="copy-btn"><span class="copy-icon"></span>プロンプトをコピー</button>
         </div>
 
         <div class="prompt-card">
-          
-          <h3 class="prompt-title">健康保険組合の付加給付</h3>
+          <h3 class="prompt-title">健康保険組合の付加給付を調べる</h3>
           <div class="prompt-usage"><span class="prompt-usage-label">使い方：</span>会社の健保組合の隠れ給付金を調べる手順</div>
-          <div class="prompt-body">夫（または私）の健康保険組合の付加給付について調べたい。
+          <div class="prompt-body">あなたは社会保障制度の専門家。
+夫（または私）が加入している健康保険組合の「付加給付」を調べて、申請を忘れているお金がないか確認したい。
 
-【加入している健康保険組合】
-・名称：
+【加入している健康保険】
+・名称：◯◯健康保険組合 ／ 協会けんぽ ／ 公務員共済 ／ 国民健康保険
 ・会社名：
-・大企業／中小／公務員：
+・規模：大企業／中小／公務員／自営
+
+【今年・過去2年で起きた医療イベント】
+（手術・入院・出産・長期通院など）
 
 以下を教えて。
-1. 健保組合の付加給付とは何か
-2. 一般的にあるサービス（一部負担還元金等）
+
+1. 健保組合の付加給付とは
+　・法定給付に上乗せされる任意の給付
+　・組合ごとに内容が違う（同じ病院代でも組合で還付額が変わる）
+
+2. 一般的にある付加給付の例
+　・一部負担還元金（高額療養費の自己負担を組合が補填）
+　・合算高額療養費付加金
+　・出産育児一時金の上乗せ
+　・傷病手当金付加金（給付率や期間の上乗せ）
+　・人間ドック・健康診断補助
+　・育児・介護休業中の保険料免除
+
 3. 申請しないともらえないお金の例
+　・付加給付は組合により自動還付の場合と、申請主義の場合がある
+　・3年で時効になるケースが多い
+
 4. 自分の組合の給付内容を調べる方法
-5. 過去にさかのぼって申請できる場合の手順</div>
+　・組合の公式サイトを「付加給付」で検索
+　・健保組合からの広報誌・ハンドブック
+　・人事・総務部門への問い合わせ
+　・健康保険組合連合会のサイトから組合情報を辿る
+
+5. さかのぼって申請する手順
+　・領収書・診療明細書の用意
+　・健保組合の申請書取得
+　・記入例・添付書類の確認
+
+6. 落とし穴
+　・退職後は申請できない場合がある
+　・転職・配偶者の扶養に切替で時効が短くなる
+　・任意継続中の給付は範囲が狭くなる
+
+最後に「今すぐ自分の健保で確認すべきこと」を3行で。</div>
           <button class="copy-btn"><span class="copy-icon"></span>プロンプトをコピー</button>
         </div>
 
-      </div>
-
-      <div class="links-block">
-        <div class="links-eyebrow">— Useful Links —</div>
-        <div class="links-title">📚 お役立ちリンク｜税金・給付金</div>
-        <div class="links-subtitle">公的機関の制度情報・申告ツール</div>
-        <div class="links-grid">
-          <a href="https://www.soumu.go.jp/main_sosiki/jichi_zeisei/czaisei/czaisei_seido/furusato/" target="_blank" rel="noopener" class="link-item">
-            <div class="link-name">ふるさと納税ポータル（総務省）<span class="link-arrow">↗</span></div>
-            <div class="link-desc"><span class="link-tag">公式</span>制度の正確な情報・限度額の考え方</div>
-          </a>
-          <a href="https://www.keisan.nta.go.jp/kyoutu/ky/sm/top" target="_blank" rel="noopener" class="link-item">
-            <div class="link-name">確定申告書作成コーナー（国税庁）<span class="link-arrow">↗</span></div>
-            <div class="link-desc"><span class="link-tag">公式</span>e-Taxで自宅から申告完了</div>
-          </a>
-          <a href="https://www.kyoukaikenpo.or.jp/" target="_blank" rel="noopener" class="link-item">
-            <div class="link-name">協会けんぽ<span class="link-arrow">↗</span></div>
-            <div class="link-desc"><span class="link-tag">公式</span>給付金の申請窓口（中小企業勤務者）</div>
-          </a>
-          <a href="https://www.kenporen.com/" target="_blank" rel="noopener" class="link-item">
-            <div class="link-name">健康保険組合連合会<span class="link-arrow">↗</span></div>
-            <div class="link-desc"><span class="link-tag">公式</span>健保組合の付加給付情報</div>
-          </a>
-          <a href="https://www.gov-online.go.jp/" target="_blank" rel="noopener" class="link-item">
-            <div class="link-name">政府広報オンライン<span class="link-arrow">↗</span></div>
-            <div class="link-desc"><span class="link-tag">公式</span>給付金・補助金の最新情報</div>
-          </a>
-        </div>
       </div>
     </div>
 
@@ -1182,89 +1361,195 @@
       <div class="prompts-grid">
 
         <div class="prompt-card">
-          
-          <h3 class="prompt-title">住宅ローンの借り換え判断</h3>
-          <div class="prompt-usage"><span class="prompt-usage-label">使い方：</span>金利情報を入れて借り換えメリットを試算</div>
-          <div class="prompt-body">住宅ローン借り換えのメリットを試算して。
+          <h3 class="prompt-title">住宅ローン借り換え判断</h3>
+          <div class="prompt-usage"><span class="prompt-usage-label">使い方：</span>金利情報を入れて、借り換えメリットを試算</div>
+          <div class="prompt-body">あなたは住宅ローンの独立系FP。
+銀行の営業トークではなく、諸費用込みの実質メリットで判定して。
 
 【現在の住宅ローン】
 ・残高：
 ・残期間：
-・金利：（変動／固定）
+・金利：（変動／固定／フラット35）
+・現在の適用金利：
 ・月返済額：
 ・借入時期：
+・団信：あり／なし／3大疾病特約あり
+・住宅ローン控除：残り◯年（年間控除額◯円）
 
 【借り換え候補】
 ・銀行名：
-・金利：
-・諸費用：
+・金利：（変動／固定◯年／全期間固定）
+・諸費用：（事務手数料／保証料／登記費用／印紙税）
+・団信内容：
+
+【世帯情報】
+・夫年収／私年収：
+・職業（団信の審査に影響）：
+・健康状態：
 
 以下を教えて。
+
 1. 借り換えで節約できる総額
-2. 諸費用を引いた実質メリット
-3. 借り換えの損益分岐
-4. 借り換えに向いてる条件・向いてない条件
-5. うちの場合のおすすめ判断</div>
+　・利息軽減額（残期間で計算）
+　・諸費用合計
+　・実質メリット（節約額 − 諸費用）
+
+2. 借り換えの「3つの条件」を満たすか
+　・残高1,000万円以上
+　・残期間10年以上
+　・金利差0.3%以上
+
+3. 損益分岐点
+　・何ヶ月で諸費用を回収できるか
+
+4. 借り換えに向いている／向いていない条件
+　・向いている：金利差大／残高多／長期残／健康
+　・向いていない：残り少／健康告知に不安／所得減
+
+5. 住宅ローン控除との関係
+　・残り控除期間で借り換えすると控除が継続するか
+　・諸費用は控除対象になるか
+
+6. 我が家の場合のおすすめ判断
+　・借り換えする／しない／半年様子見、を理由付きで
+
+7. 注意点
+　・団信の見直しタイミング
+　・保証料の戻りの確認
+　・手続き期間中の金利上昇リスク</div>
           <button class="copy-btn"><span class="copy-icon"></span>プロンプトをコピー</button>
         </div>
 
         <div class="prompt-card">
-          
           <h3 class="prompt-title">老後資金シミュレーション</h3>
           <div class="prompt-usage"><span class="prompt-usage-label">使い方：</span>必要金額と、現状で足りるか試算</div>
-          <div class="prompt-body">老後資金が足りるか試算して。
+          <div class="prompt-body">あなたは老後資金プランナー。
+ねんきんネットで取得した年金見込額と、現実的な老後生活費で試算して。
+※公的年金は終身、私的資金は有限という前提で。
 
 【夫婦情報】
-
+・夫（現年齢／退職予定年齢）：
+・私（現年齢／退職予定年齢）：
 
 【予想収入】
-・夫の年金：月（試算）
-・私の年金：月
-・退職金：
+・夫の年金：月◯円（試算 65歳〜終身）
+・私の年金：月◯円
+・退職金：◯◯円（一時金／年金受取）
+・iDeCo一時金 or 年金：
+・賃貸収入・配当などその他：
 
 【希望ライフスタイル】
-・老後の月の生活費：
-・趣味・旅行費：年
-・住居費：
+・老後の月の生活費（持ち家／賃貸別）：
+・趣味・旅行費：年◯円
+・住居費：月（持ち家＝固定資産税・修繕費／賃貸＝家賃）
+・介護に備えるか：
 
 【現在の資産】
 ・預金：
 ・NISA：
 ・iDeCo：
+・退職金見込：
+・自宅評価額（売却 or 賃貸の選択肢）：
 
 以下を教えて。
+
 1. 老後の月の収支
+　・収入合計 − 支出合計（年金＋取崩し）
+　・月の不足額
+
 2. 必要な老後資金の総額
+　・寿命を90歳・95歳の2パターン
+　・物価上昇率1.5%・2%でのシミュレーション
+　・介護・医療の上振れリスク
+
 3. 現状で足りるか・不足額
+　・運用利回り0%・3%・5%の3シナリオ
+
 4. あと月いくら積み立てれば足りるか
-5. 不足を埋めるアクションプラン</div>
+　・残り運用期間で逆算
+
+5. 不足を埋めるアクションプラン
+　・iDeCo増額／NISA増額／繰下げ受給
+　・働き方の選択肢（70歳まで就労 vs 65歳引退）
+　・支出を減らす（住居・通信・保険）
+
+6. 介護・医療リスクの上乗せ
+　・介護費用の平均（月7万円×期間）
+　・医療費の自己負担増（後期高齢者医療制度）
+
+7. 落とし穴
+　・退職後の住民税・健康保険料（前年所得で計算される）
+　・在職老齢年金で年金カットされるケース
+　・iDeCo一時金の退職所得控除
+　・遺族年金の見込額
+
+最後に、夫婦で確認すべき「老後の3大リスク」を1行で。</div>
           <button class="copy-btn"><span class="copy-icon"></span>プロンプトをコピー</button>
         </div>
 
-      </div>
+        <div class="prompt-card">
+          <h3 class="prompt-title">車を持つ vs 手放す判断</h3>
+          <div class="prompt-usage"><span class="prompt-usage-label">使い方：</span>車の年間総コストとライフスタイルから所有判断を試算</div>
+          <div class="prompt-body">あなたは家計の固定費に詳しいFP。
+車を持ち続けるか・手放すか、我が家の場合の最適解を試算して。
+※家計最大の隠れ固定費の一つ。「みんな持ってる」は判断軸にしない。
 
-      <div class="links-block">
-        <div class="links-eyebrow">— Useful Links —</div>
-        <div class="links-title">📚 お役立ちリンク｜住居・老後</div>
-        <div class="links-subtitle">公的機関の年金・住宅ローン情報</div>
-        <div class="links-grid">
-          <a href="https://www.nenkin.go.jp/n_net/" target="_blank" rel="noopener" class="link-item">
-            <div class="link-name">ねんきんネット<span class="link-arrow">↗</span></div>
-            <div class="link-desc"><span class="link-tag">公式</span>自分の年金見込額を確認</div>
-          </a>
-          <a href="https://nenkin-shisan.mhlw.go.jp/" target="_blank" rel="noopener" class="link-item">
-            <div class="link-name">公的年金シミュレーター（厚労省）<span class="link-arrow">↗</span></div>
-            <div class="link-desc"><span class="link-tag">公式</span>働き方別の年金試算ツール</div>
-          </a>
-          <a href="https://www.flat35.com/" target="_blank" rel="noopener" class="link-item">
-            <div class="link-name">フラット35（住宅金融支援機構）<span class="link-arrow">↗</span></div>
-            <div class="link-desc"><span class="link-tag">公式</span>公的機関の固定金利住宅ローン</div>
-          </a>
-          <a href="https://www.mlit.go.jp/jutakukentiku/house/jutakukentiku_house_tk2_000017.html" target="_blank" rel="noopener" class="link-item">
-            <div class="link-name">住宅ローン控除（国交省）<span class="link-arrow">↗</span></div>
-            <div class="link-desc"><span class="link-tag">公式</span>住宅ローン控除の制度説明</div>
-          </a>
+【現在の車】
+・車種・年式・走行距離：
+・購入時の支払い（ローン残高）：
+・車検：年・月（次回◯年）
+・任意保険：月／年
+・税金（自動車税・重量税）：年
+・駐車場代：月
+・ガソリン代：月平均
+・メンテナンス（オイル・タイヤ等）：年
+
+【利用状況】
+・週の利用回数・距離：
+・主な用途：通勤／買い物／送迎／レジャー
+・住んでいる地域：都市部／郊外／地方
+・公共交通機関アクセス：
+・代替手段：カーシェア・タクシー・自転車
+
+【家族構成】
+・子の年齢・人数：
+・送迎の頻度：
+
+以下を出力して。
+
+1. 車にかかっている年間総コスト
+　・固定費（保険・税金・駐車場・車検均し）
+　・変動費（ガソリン・メンテ）
+　・減価償却（残価ベース）
+　・15年所有の総額試算
+
+2. 手放す場合の代替コスト試算
+　・カーシェア（タイムズ・三井不動産）月の利用想定
+　・タクシー・公共交通機関への振替
+　・レジャー用レンタカー
+
+3. 我が家の損益分岐
+　・週何回・何キロ以上なら所有が得
+　・送迎・通院などの代替が効くか
+
+4. 「持つべき」例外条件
+　・乳幼児・要介護家族あり
+　・公共交通が貧弱な地域
+　・仕事で必須
+
+5. 「手放すべき」サイン
+　・週末しか乗らない
+　・駐車場代＋保険＋税金で月3万円超
+　・10年超で買い替え検討中
+
+6. 半年保留する選択肢
+　・乗らない月をカウントして判断
+　・夫婦の意見が割れた場合の合意形成
+
+最後に「我が家の最適解」を理由つきで1行で。</div>
+          <button class="copy-btn"><span class="copy-icon"></span>プロンプトをコピー</button>
         </div>
+
       </div>
     </div>
 
@@ -1278,103 +1563,176 @@
       <div class="prompts-grid">
 
         <div class="prompt-card">
-          
           <h3 class="prompt-title">夫婦お金会議の議事進行</h3>
-          <div class="prompt-usage"><span class="prompt-usage-label">使い方：</span>夫婦お金会議の議題と進行案</div>
-          <div class="prompt-body">夫婦でお金会議を行いたい。
-今月の議題と議事進行を作って。
+          <div class="prompt-usage"><span class="prompt-usage-label">使い方：</span>夫婦お金会議の議題と進行を作る</div>
+          <div class="prompt-body">あなたは夫婦カウンセリングと家計に詳しいFP。
+夫婦で月1回行うお金会議の進行台本を作って。
+※片方が責められたり、感情的な口論にならないトーンで。
 
 【今月の状況】
 ・先月の家計収支：
-・今月起きたお金関係の出来事：
+・今月起きたお金関係の出来事（昇給・予想外の出費など）：
 ・直近の悩み：
 ・夫婦で話したいテーマ：
 
-【会議の目的】
-
+【会議の目的】（チェック）
+・現状共有
+・将来計画（教育費・住宅・老後）
+・支出のルール決め
+・特別な決断（転職・引越し・大きな買い物）
 
 【私たち夫婦の特徴】
-
+・夫の性格：
+・私の性格：
+・お金の話で揉めやすいパターン：
 
 以下を出力して。
-1. 会議のアジェンダ（時間配分付き）
+
+1. 会議のアジェンダ（合計60分以内）
+　・冒頭5分：感謝・労いの共有
+　・15分：先月の数値確認
+　・20分：今月のテーマ討議
+　・15分：来月のアクション決定
+　・5分：次回の議題予約
+
 2. 各議題の話し合いの進め方
+　・冒頭の口火を切るフレーズ
+　・感情的にならない切り出し方（「責める」ではなく「相談する」）
+
 3. 揉めそうなポイントの回避策
+　・支出の差を指摘するときの言い換え
+　・夫の趣味出費／私のママ友交際費 の話し方
+　・実家への支援を話し合うとき
+
 4. 議事録テンプレ
-5. 次月までの宿題3つ</div>
+　・決まったこと／持ち越し／担当／期限
+
+5. 次月までの宿題3つ
+　・夫の宿題／私の宿題／2人の宿題
+
+6. ファイナル質問
+　・「来月までに2人で達成したい1つ」を決める
+
+最後に、会議が荒れたときに使う「タイムアウト合言葉」を1つ提案。</div>
           <button class="copy-btn"><span class="copy-icon"></span>プロンプトをコピー</button>
         </div>
 
         <div class="prompt-card">
-          
           <h3 class="prompt-title">子どもにお金の話をする</h3>
-          <div class="prompt-usage"><span class="prompt-usage-label">使い方：</span>子どもの年齢に合わせたお金の話し方</div>
-          <div class="prompt-body">子どもにお金の話をするための、年齢に合わせた説明方法を教えて。
+          <div class="prompt-usage"><span class="prompt-usage-label">使い方：</span>子どもの年齢に合わせた金銭教育の伝え方</div>
+          <div class="prompt-body">あなたは金融教育の専門家。
+子どもの年齢・性格に合わせて、お金の話の伝え方を教えて。
+※「我慢」「贅沢」のような価値判断ではなく、選択と判断を学ばせる方向で。
 
 【子どもの情報】
 ・年齢：
-・性格：
+・性格（慎重／好奇心旺盛／甘えん坊 等）：
 ・お金への関心度：
+・現在のお小遣い：あり（金額・頻度）／なし
 
-【話したいテーマ】
-
+【話したいテーマ】（チェック）
+・お小遣いのルール
+・欲しいものの買い方（即決 vs 待つ）
+・貯金の意味
+・労働とお金（家のお手伝い報酬制 など）
+・税金・社会のお金の流れ
+・投資・複利の基本
+・友達との貸し借り
+・キャッシュレスの仕組み
 
 以下を出力して。
+
 1. 年齢にあった伝え方のコツ
+　・3〜6歳：物々交換から「お金は道具」を体感
+　・7〜9歳：お小遣い帳・予算分割
+　・10〜12歳：労働報酬・複利・税金の基本
+　・中学生：銀行口座・キャッシュレス・投資の入口
+　・高校生：奨学金・自動車保険・確定申告の基本
+
 2. 具体的なフレーズ例3つ
+　・「今買うか、貯めて◯◯買うか、どっちがいい？」
+　・「これは家族の予算からだよ。代わりに◯◯は減らそうか」
+　・「お父さんが働いてもらったお金から◯◯円使うね」
+
 3. 子どもが質問してきそうなことと答え方
+　・「うちって貧乏なの？」
+　・「友達は持ってるのにどうして買ってくれないの？」
+　・「税金って何のため？」
+
 4. 一緒にやれるアクション
-5. 避けたいNGワード</div>
+　・お小遣い帳をスマホアプリで
+　・スーパーで予算を渡して買い物体験
+　・ジュニアNISA終了後の特定口座の使い方
+
+5. 避けたいNGワード
+　・「うちにはお金ない」（不安を植える）
+　・「我慢しなさい」（理由を説明しない）
+　・「将来困るよ」（恐怖訴求）
+
+6. 兄弟で差が出るときの説明
+
+最後に、今夜から3分で実践できる「最初の1問」を提案。</div>
           <button class="copy-btn"><span class="copy-icon"></span>プロンプトをコピー</button>
         </div>
 
         <div class="prompt-card">
-          
           <h3 class="prompt-title">夫が家計に協力してくれない</h3>
           <div class="prompt-usage"><span class="prompt-usage-label">使い方：</span>家計の話に巻き込めない夫を動かすアプローチ</div>
-          <div class="prompt-body">夫が家計改善に協力してくれない。アプローチ方法を教えて。
+          <div class="prompt-body">あなたは行動経済学とコーチングの専門家。
+夫が家計改善に協力してくれない問題を、心理学のフレームで分析して、現実的な巻き込み方を教えて。
+※「夫を変える」のではなく「動きやすい環境を作る」発想で。
 
 【現状】
-・夫の性格：
-・お金の話への反応：
-・夫の管理項目：
-・私の管理項目：
+・夫の性格（細かい／大雑把／プライドが高い／不安を表に出さない 等）：
+・お金の話への反応（黙る／怒る／面倒くさがる／興味なし）：
+・夫が管理している項目（給与口座／投資／住宅ローン 等）：
+・私が管理している項目：
+・夫の趣味・浪費癖：
+・夫婦の財布（共有／別財布／一部共有）：
 
 【私が困っていること】
 
-
 【これまで試したこと】
 
-
 以下を教えて。
-1. 夫タイプ別のアプローチ
+
+1. 夫タイプ別のアプローチ（4タイプ）
+　・「数字嫌い・感覚派」タイプ：可視化より体験重視
+　・「プライド高い」タイプ：責めない・選択肢で渡す
+　・「面倒くさがり」タイプ：負担ゼロの仕組みで巻き込む
+　・「楽観的」タイプ：将来の具体シナリオを見せる
+
 2. 「協力しよう」と思わせる言葉
+　・「お願いがあるんだけど」より効くフレーズ
+　・夫のメリット（自分の自由になるお金が増える等）から話す
+　・将来の家族の姿を一緒に描く言葉
+
 3. 巻き込むための小さなステップ
+　・第1段階：見せるだけ（数字を共有）
+　・第2段階：意見を聞く（決定権を渡す）
+　・第3段階：一緒に動く（窓口同行・申込）
+
 4. NG行動・NGワード
-5. 夫を動かす最初の一手</div>
+　・「あなたが◯◯しないから」（責めの主語）
+　・「みんなやってる」（プライドを刺激）
+　・「私ばっかり」（被害者ポジション）
+　・他の夫婦と比較する
+　・SNSや本を押し付ける
+
+5. 夫を動かす最初の一手
+　・週末に5分だけ時間をもらう
+　・選択肢を3つ用意して選ばせる
+　・成果が見えたらすぐ「ありがとう」を言葉にする
+
+6. 動かない場合の現実的な選択肢
+　・夫の管轄外で家計を整える方法
+　・夫の同意なしでもできる節税・貯蓄
+　・「お小遣い制」が逆効果になるケース
+
+最後に、明日から使える「夫の心が開く一言」を3つ提示。</div>
           <button class="copy-btn"><span class="copy-icon"></span>プロンプトをコピー</button>
         </div>
 
-      </div>
-
-      <div class="links-block">
-        <div class="links-eyebrow">— Useful Links —</div>
-        <div class="links-title">📚 お役立ちリンク｜夫婦・家族</div>
-        <div class="links-subtitle">公的機関の無料相談・お金教育</div>
-        <div class="links-grid">
-          <a href="https://www.jafp.or.jp/confer/" target="_blank" rel="noopener" class="link-item">
-            <div class="link-name">日本FP協会 無料相談<span class="link-arrow">↗</span></div>
-            <div class="link-desc"><span class="link-tag">公式</span>体験型ファイナンシャル・プランニング相談</div>
-          </a>
-          <a href="https://www.kokusen.go.jp/" target="_blank" rel="noopener" class="link-item">
-            <div class="link-name">国民生活センター<span class="link-arrow">↗</span></div>
-            <div class="link-desc"><span class="link-tag">公式</span>お金・契約のトラブル無料相談</div>
-          </a>
-          <a href="https://www.shiruporuto.jp/public/" target="_blank" rel="noopener" class="link-item">
-            <div class="link-name">知るぽると 子どもお金教育<span class="link-arrow">↗</span></div>
-            <div class="link-desc"><span class="link-tag">公式</span>金融広報中央委員会・年齢別教材</div>
-          </a>
-        </div>
       </div>
     </div>
 
